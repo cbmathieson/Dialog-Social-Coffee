@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58CE2470C1AA009873AE /* AppDelegate.swift */; };
+		212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D02470C1AA009873AE /* SceneDelegate.swift */; };
+		212F58D42470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D22470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld */; };
+		212F58D62470C1AA009873AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D52470C1AA009873AE /* ContentView.swift */; };
+		212F58D82470C1AE009873AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212F58D72470C1AE009873AE /* Assets.xcassets */; };
+		212F58DB2470C1AE009873AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212F58DA2470C1AE009873AE /* Preview Assets.xcassets */; };
+		212F58DE2470C1AE009873AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dialog Social Coffee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		212F58CE2470C1AA009873AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		212F58D02470C1AA009873AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		212F58D32470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dialog_Social_Coffee.xcdatamodel; sourceTree = "<group>"; };
+		212F58D52470C1AA009873AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		212F58D72470C1AE009873AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		212F58DA2470C1AE009873AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		212F58DD2470C1AE009873AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		212F58DF2470C1AE009873AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		212F58C82470C1AA009873AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		212F58C22470C1AA009873AE = {
+			isa = PBXGroup;
+			children = (
+				212F58CD2470C1AA009873AE /* Dialog Social Coffee */,
+				212F58CC2470C1AA009873AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		212F58CC2470C1AA009873AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		212F58CD2470C1AA009873AE /* Dialog Social Coffee */ = {
+			isa = PBXGroup;
+			children = (
+				212F58CE2470C1AA009873AE /* AppDelegate.swift */,
+				212F58D02470C1AA009873AE /* SceneDelegate.swift */,
+				212F58D52470C1AA009873AE /* ContentView.swift */,
+				212F58D72470C1AE009873AE /* Assets.xcassets */,
+				212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */,
+				212F58DF2470C1AE009873AE /* Info.plist */,
+				212F58D22470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld */,
+				212F58D92470C1AE009873AE /* Preview Content */,
+			);
+			path = "Dialog Social Coffee";
+			sourceTree = "<group>";
+		};
+		212F58D92470C1AE009873AE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				212F58DA2470C1AE009873AE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		212F58CA2470C1AA009873AE /* Dialog Social Coffee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 212F58E22470C1AE009873AE /* Build configuration list for PBXNativeTarget "Dialog Social Coffee" */;
+			buildPhases = (
+				212F58C72470C1AA009873AE /* Sources */,
+				212F58C82470C1AA009873AE /* Frameworks */,
+				212F58C92470C1AA009873AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dialog Social Coffee";
+			productName = "Dialog Social Coffee";
+			productReference = 212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		212F58C32470C1AA009873AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Craig Mathieson";
+				TargetAttributes = {
+					212F58CA2470C1AA009873AE = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = 212F58C62470C1AA009873AE /* Build configuration list for PBXProject "Dialog Social Coffee" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 212F58C22470C1AA009873AE;
+			productRefGroup = 212F58CC2470C1AA009873AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				212F58CA2470C1AA009873AE /* Dialog Social Coffee */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		212F58C92470C1AA009873AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				212F58DE2470C1AE009873AE /* LaunchScreen.storyboard in Resources */,
+				212F58DB2470C1AE009873AE /* Preview Assets.xcassets in Resources */,
+				212F58D82470C1AE009873AE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		212F58C72470C1AA009873AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
+				212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */,
+				212F58D62470C1AA009873AE /* ContentView.swift in Sources */,
+				212F58D42470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				212F58DD2470C1AE009873AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		212F58E02470C1AE009873AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		212F58E12470C1AE009873AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		212F58E32470C1AE009873AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Dialog Social Coffee/Preview Content\"";
+				DEVELOPMENT_TEAM = 9H993U7TV2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Dialog Social Coffee/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.craigmathieson.Dialog-Social-Coffee";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		212F58E42470C1AE009873AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Dialog Social Coffee/Preview Content\"";
+				DEVELOPMENT_TEAM = 9H993U7TV2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Dialog Social Coffee/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.craigmathieson.Dialog-Social-Coffee";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		212F58C62470C1AA009873AE /* Build configuration list for PBXProject "Dialog Social Coffee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				212F58E02470C1AE009873AE /* Debug */,
+				212F58E12470C1AE009873AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		212F58E22470C1AE009873AE /* Build configuration list for PBXNativeTarget "Dialog Social Coffee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				212F58E32470C1AE009873AE /* Debug */,
+				212F58E42470C1AE009873AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		212F58D22470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				212F58D32470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodel */,
+			);
+			currentVersion = 212F58D32470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodel */;
+			path = Dialog_Social_Coffee.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 212F58C32470C1AA009873AE /* Project object */;
+}
