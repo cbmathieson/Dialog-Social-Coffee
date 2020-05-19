@@ -3,17 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58CE2470C1AA009873AE /* AppDelegate.swift */; };
 		212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D02470C1AA009873AE /* SceneDelegate.swift */; };
 		212F58D42470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D22470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld */; };
-		212F58D62470C1AA009873AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D52470C1AA009873AE /* ContentView.swift */; };
+		212F58D62470C1AA009873AE /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58D52470C1AA009873AE /* TabbedView.swift */; };
 		212F58D82470C1AE009873AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212F58D72470C1AE009873AE /* Assets.xcassets */; };
 		212F58DB2470C1AE009873AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212F58DA2470C1AE009873AE /* Preview Assets.xcassets */; };
 		212F58DE2470C1AE009873AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */; };
+		212F58E72470C251009873AE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58E62470C251009873AE /* Recipe.swift */; };
+		212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58E92470C4D8009873AE /* RecipeListView.swift */; };
+		212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58ED2470CD77009873AE /* RecipeListViewModel.swift */; };
+		212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */; };
+		212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58F824720FFA009873AE /* ConnectToScaleView.swift */; };
+		212F58FD2472219C009873AE /* BrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FC2472219C009873AE /* BrewView.swift */; };
+		212F58FF247224EC009873AE /* LineChartSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FE247224EC009873AE /* LineChartSwiftUI.swift */; };
+		212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F5900247225A8009873AE /* AddRecipeInfoView.swift */; };
+		212F59032472F650009873AE /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59022472F650009873AE /* RecipeRepository.swift */; };
+		212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59042472F98A009873AE /* AppDelegate+Resolving.swift */; };
+		216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */; };
+		216BEAC32473583800A05CFF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC22473583800A05CFF /* CameraView.swift */; };
+		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +34,26 @@
 		212F58CE2470C1AA009873AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		212F58D02470C1AA009873AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		212F58D32470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dialog_Social_Coffee.xcdatamodel; sourceTree = "<group>"; };
-		212F58D52470C1AA009873AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		212F58D52470C1AA009873AE /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
 		212F58D72470C1AE009873AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		212F58DA2470C1AE009873AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		212F58DD2470C1AE009873AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		212F58DF2470C1AE009873AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		212F58E62470C251009873AE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		212F58E92470C4D8009873AE /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
+		212F58ED2470CD77009873AE /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
+		212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellViewModel.swift; sourceTree = "<group>"; };
+		212F58F824720FFA009873AE /* ConnectToScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToScaleView.swift; sourceTree = "<group>"; };
+		212F58FC2472219C009873AE /* BrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewView.swift; sourceTree = "<group>"; };
+		212F58FE247224EC009873AE /* LineChartSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartSwiftUI.swift; sourceTree = "<group>"; };
+		212F5900247225A8009873AE /* AddRecipeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoView.swift; sourceTree = "<group>"; };
+		212F59022472F650009873AE /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
+		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
+		216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialog_Social_Coffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.release.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.release.xcconfig"; sourceTree = "<group>"; };
+		9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.debug.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +73,8 @@
 			children = (
 				212F58CD2470C1AA009873AE /* Dialog Social Coffee */,
 				212F58CC2470C1AA009873AE /* Products */,
+				E525851B799262C9E22A4C49 /* Pods */,
+				5C826C14B0156354B4A373CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,8 +90,12 @@
 			isa = PBXGroup;
 			children = (
 				212F58CE2470C1AA009873AE /* AppDelegate.swift */,
+				212F59042472F98A009873AE /* AppDelegate+Resolving.swift */,
 				212F58D02470C1AA009873AE /* SceneDelegate.swift */,
-				212F58D52470C1AA009873AE /* ContentView.swift */,
+				212F58EB2470CCDE009873AE /* Repositories */,
+				212F58E52470C223009873AE /* Models */,
+				212F58EC2470CCF0009873AE /* ViewModels */,
+				212F58E82470C4AE009873AE /* Views */,
 				212F58D72470C1AE009873AE /* Assets.xcassets */,
 				212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */,
 				212F58DF2470C1AE009873AE /* Info.plist */,
@@ -78,6 +113,87 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		212F58E52470C223009873AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				212F58E62470C251009873AE /* Recipe.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		212F58E82470C4AE009873AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				212F58D52470C1AA009873AE /* TabbedView.swift */,
+				212F58E92470C4D8009873AE /* RecipeListView.swift */,
+				212F58F424720B4C009873AE /* Create Recipe Views */,
+				212F58F3247207AC009873AE /* Reusable Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		212F58EB2470CCDE009873AE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				212F59022472F650009873AE /* RecipeRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		212F58EC2470CCF0009873AE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				212F58ED2470CD77009873AE /* RecipeListViewModel.swift */,
+				212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */,
+				216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */,
+				212F58F524720B6F009873AE /* Create Recipe View Models */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		212F58F3247207AC009873AE /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				212F58FE247224EC009873AE /* LineChartSwiftUI.swift */,
+				216BEAC22473583800A05CFF /* CameraView.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		212F58F424720B4C009873AE /* Create Recipe Views */ = {
+			isa = PBXGroup;
+			children = (
+				212F58F824720FFA009873AE /* ConnectToScaleView.swift */,
+				212F58FC2472219C009873AE /* BrewView.swift */,
+				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
+			);
+			path = "Create Recipe Views";
+			sourceTree = "<group>";
+		};
+		212F58F524720B6F009873AE /* Create Recipe View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Create Recipe View Models";
+			sourceTree = "<group>";
+		};
+		5C826C14B0156354B4A373CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E525851B799262C9E22A4C49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */,
+				6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +201,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 212F58E22470C1AE009873AE /* Build configuration list for PBXNativeTarget "Dialog Social Coffee" */;
 			buildPhases = (
+				CA69F503A8936A2C15EA5A6F /* [CP] Check Pods Manifest.lock */,
 				212F58C72470C1AA009873AE /* Sources */,
 				212F58C82470C1AA009873AE /* Frameworks */,
 				212F58C92470C1AA009873AE /* Resources */,
+				AD24D50DBA6B03085C77A901 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,15 +262,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AD24D50DBA6B03085C77A901 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA69F503A8936A2C15EA5A6F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dialog Social Coffee-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		212F58C72470C1AA009873AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
+				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
+				212F58FD2472219C009873AE /* BrewView.swift in Sources */,
+				212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */,
+				212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */,
+				212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */,
 				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
+				212F58FF247224EC009873AE /* LineChartSwiftUI.swift in Sources */,
+				216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */,
+				212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */,
 				212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */,
-				212F58D62470C1AA009873AE /* ContentView.swift in Sources */,
+				212F58D62470C1AA009873AE /* TabbedView.swift in Sources */,
+				212F59032472F650009873AE /* RecipeRepository.swift in Sources */,
 				212F58D42470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld in Sources */,
+				212F58E72470C251009873AE /* Recipe.swift in Sources */,
+				216BEAC32473583800A05CFF /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +446,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,6 +458,7 @@
 		};
 		212F58E32470C1AE009873AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +479,7 @@
 		};
 		212F58E42470C1AE009873AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
