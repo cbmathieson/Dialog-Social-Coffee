@@ -26,6 +26,7 @@
 		212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59042472F98A009873AE /* AppDelegate+Resolving.swift */; };
 		216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */; };
 		216BEAC32473583800A05CFF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC22473583800A05CFF /* CameraView.swift */; };
+		21BA34B72479F7C80080BCB2 /* AddRecipeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */; };
 		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoViewModel.swift; sourceTree = "<group>"; };
 		3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialog_Social_Coffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.release.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.release.xcconfig"; sourceTree = "<group>"; };
 		9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.debug.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		212F58F524720B6F009873AE /* Create Recipe View Models */ = {
 			isa = PBXGroup;
 			children = (
+				21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */,
 			);
 			path = "Create Recipe View Models";
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BA34B72479F7C80080BCB2 /* AddRecipeInfoViewModel.swift in Sources */,
 				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
 				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
 				212F58FD2472219C009873AE /* BrewView.swift in Sources */,

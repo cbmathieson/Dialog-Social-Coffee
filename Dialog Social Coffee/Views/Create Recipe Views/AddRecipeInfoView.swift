@@ -6,13 +6,9 @@
 //  Copyright © 2020 Craig Mathieson. All rights reserved.
 //
 
-// NOT MVVM - need to fix later
-
 import SwiftUI
 import Charts
 import Combine
-import UIKit
-import Disk
 
 struct AddRecipeInfoView: View {
     
@@ -20,7 +16,7 @@ struct AddRecipeInfoView: View {
     @State private var image: UIImage? = nil
     
     @Binding var isPresented: Bool
-    @ObservedObject var recipeListVM = RecipeListViewModel()
+    @ObservedObject var addRecipeInfoVM = AddRecipeInfoViewModel()
     
     @State var coordinates:[ChartDataEntry]
     @State var recipe_name:String = ""
@@ -29,7 +25,7 @@ struct AddRecipeInfoView: View {
     @State var comments:String = ""
     
     var body: some View {
-        VStack {
+        ScrollView(.vertical) {
             VStack{
                 TextField("Recipe Name", text: $recipe_name).padding()
                 TextField("coffee in (g)", text: $gramsIn)
@@ -41,57 +37,39 @@ struct AddRecipeInfoView: View {
                 }.padding()
                 TextField("any comments?",text: $comments).padding()
             }
-            ScrollView(.horizontal) {
-                HStack {
-                    if bean_id == "" {
-                        Button(action: {
-                            self.bean_id = "3f24g430qjrgvs"
-                        }) {
-                            Text("Add Bean")
-                        }
-                    } else {
-                        Text("\(bean_id)")
-                    }
-                    LineChartSwiftUI(coordinates: self.$coordinates)
-                        //use frame to change the graph size within your SwiftUI view
-                        .frame(width: 300, height: 300)
-                    if self.image != nil {
-                        Image(uiImage: self.image!)
-                            .resizable()
-                            .frame(width: 300,height:300)
-                            .aspectRatio(contentMode: .fit)
-                    } else {
-                        Button(action: {
-                            self.showImagePicker.toggle()
-                        }) {
-                            Text("Add Image")
-                        }
-                        .sheet(isPresented: self.$showImagePicker) {
-                            CameraView(showCameraView: self.$showImagePicker, pickedImage: self.$image)
-                        }
-                    }
+            if bean_id == "" {
+                Button(action: {
+                    self.bean_id = "3f24g430qjrgvs"
+                }) {
+                    Text("Add Bean")
+                }
+            } else {
+                Text("\(bean_id)")
+            }
+            LineChartSwiftUI(coordinates: self.$coordinates)
+                //use frame to change the graph size within your SwiftUI view
+                .frame(width: 300, height: 300)
+            if self.image != nil {
+                VStack {
+                    Image(uiImage: self.image!)
+                        .resizable()
+                        .aspectRatio(self.image!.size, contentMode: .fit)
+                        .frame(width: 300)
+                }
+            } else {
+                Button(action: {
+                    self.showImagePicker.toggle()
+                }) {
+                    Text("Add Image")
+                }
+                .sheet(isPresented: self.$showImagePicker) {
+                    CameraView(showCameraView: self.$showImagePicker, pickedImage: self.$image)
                 }
             }
             Button(action: {
-                // save image to disk and create identifiable name
-                var image_location = ""
-                if let recipe_image = self.image {
-                    image_location = UUID().uuidString
-                    do {
-                        try Disk.save(recipe_image, to: .documents, as: "Recipe_Photos/\(image_location).png")
-                    }
-                    catch let error as NSError {
-                        fatalError("""
-                        Domain: \(error.domain)
-                        Code: \(error.code)
-                        Description: \(error.localizedDescription)
-                        Failure Reason: \(error.localizedFailureReason ?? "")
-                        Suggestions: \(error.localizedRecoverySuggestion ?? "")
-                        """)
-                    }
-                }
+                // Passes off to Save to Disk
+                self.addRecipeInfoVM.addRecipe(recipe_name: self.recipe_name, image: self.image, comments: self.comments, gramsIn: self.gramsIn, bean_id: self.bean_id, coordinates: self.coordinates)
                 
-                self.recipeListVM.addRecipe(recipe: Recipe(title: self.recipe_name, image: "Recipe_Photos/\(image_location).png", comments: self.comments, coffee_in: self.convertToDouble(coffee_in: self.gramsIn), bean_id: self.bean_id, brew_curve: self.convertCoordinates(coordinates: self.coordinates)))
                 self.isPresented = false
             }) {
                 Text("Save")
@@ -99,21 +77,5 @@ struct AddRecipeInfoView: View {
             .padding()
         }
         .navigationBarTitle(Text("Recipe Info"))
-    }
-    
-    private func convertToDouble(coffee_in: String) -> Double {
-        if let value = Double(self.gramsIn) {
-            return value
-        } else {
-            return 19.5
-        }
-    }
-    
-    private func convertCoordinates(coordinates: [ChartDataEntry]) -> [Double] {
-        var set:[Double] = []
-        for i in coordinates {
-            set.append(i.y)
-        }
-        return set
     }
 }

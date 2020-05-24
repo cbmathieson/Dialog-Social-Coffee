@@ -16,7 +16,6 @@
  */
 
 import SwiftUI
-import Disk // NOT MVVM DAWG
 
 struct RecipeListView: View {
     
@@ -67,7 +66,6 @@ struct RecipeListView_Previews: PreviewProvider {
 
 struct RecipeCell: View { // (0)
     @ObservedObject var recipeCellVM: RecipeCellViewModel // (1)
-    @State var image:UIImage? = nil
     
     var body: some View {
         HStack {
@@ -77,16 +75,15 @@ struct RecipeCell: View { // (0)
                 Text("@ \(String(format: "%.0f",recipeCellVM.recipe.time))s").font(.body)
             }
             GeometryReader{ (proxy : GeometryProxy) in  // New Code
-                VStack(alignment: .trailing) {
-                    if self.image != nil {
-                        Image(uiImage: self.image!)
-                            .resizable()
-                            .frame(width: proxy.size.height, height: proxy.size.height)
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(2)
-                    } else {
-                        Image(systemName: "chevron.right")
+                HStack {
+                    Spacer()
+                    if self.recipeCellVM.image != nil {
+                        Image(uiImage: self.recipeCellVM.image!)
+                        .resizable()
+                            .aspectRatio(self.recipeCellVM.image!.size, contentMode: .fit)
+                        .frame(width: 300)
                     }
+                    Image(systemName: "chevron.right")
                 }
                     .frame(width: proxy.size.width, height:proxy.size.height , alignment: .trailing) // New Code
             }
@@ -94,21 +91,6 @@ struct RecipeCell: View { // (0)
         .onTapGesture {
             // open detail view
         }
-        .onAppear(perform: {
-            //get image if available
-            do {
-                self.image = try Disk.retrieve(self.recipeCellVM.recipe.image, from: .documents, as: UIImage.self)
-            }
-            catch let error as NSError {
-                fatalError("""
-                    Domain: \(error.domain)
-                    Code: \(error.code)
-                    Description: \(error.localizedDescription)
-                    Failure Reason: \(error.localizedFailureReason ?? "")
-                    Suggestions: \(error.localizedRecoverySuggestion ?? "")
-                    """)
-            }
-        })
     }
 }
 

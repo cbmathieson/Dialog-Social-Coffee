@@ -9,7 +9,7 @@
 /*
  (1) ObservableObject means we can access the obejct from anwhere using @Published
  (3) This on init takes the values and can be accessed on the RecipeListView
- (4/5) Add and remove recipes from the repository
+ (4) Remove recipes from the repository
  
  (6) Use the Repository as our data source on init so we can sync data across views
  (7) We are linking the recipeCells to the recipeRepository on init
@@ -40,9 +40,5 @@ class RecipeListViewModel: ObservableObject { // (1)
         viewModels.forEach { recipeCellViewModel in
             recipeRepository.removeRecipe(recipeCellViewModel.recipe)
         }
-    }
-    
-    func addRecipe(recipe: Recipe) { // (5)
-        recipeRepository.addRecipe(recipe)
     }
 }
