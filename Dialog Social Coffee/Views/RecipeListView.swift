@@ -27,7 +27,10 @@ struct RecipeListView: View {
             VStack(alignment: .leading) {
                 List {
                     ForEach (recipeListVM.recipeCellViewModels) { recipeCellVM in // (8)
-                        RecipeCell(recipeCellVM: recipeCellVM) // (1)
+                        NavigationLink(
+                        destination: RecipeDetailView(recipeDetailVM: RecipeDetailViewModel(recipe: recipeCellVM.recipe,image: recipeCellVM.image))) {
+                            RecipeCell(recipeCellVM: recipeCellVM) // (1)
+                        }
                     }
                     .onDelete { indexSet in
                         self.recipeListVM.removeRecipes(atOffsets: indexSet)
@@ -74,22 +77,19 @@ struct RecipeCell: View { // (0)
                 Text("\(String(format: "%.1f",recipeCellVM.recipe.coffee_in)) -> \(String(format: "%.1f",recipeCellVM.recipe.coffee_out)) (\(recipeCellVM.recipe.brew_ratio))").font(.body)
                 Text("@ \(String(format: "%.0f",recipeCellVM.recipe.time))s").font(.body)
             }
-            GeometryReader{ (proxy : GeometryProxy) in  // New Code
+            GeometryReader{ (proxy : GeometryProxy) in
                 HStack {
                     Spacer()
                     if self.recipeCellVM.image != nil {
                         Image(uiImage: self.recipeCellVM.image!)
                         .resizable()
-                            .aspectRatio(self.recipeCellVM.image!.size, contentMode: .fit)
-                        .frame(width: 300)
+                        .aspectRatio(self.recipeCellVM.image!.size, contentMode: .fit)
+                        .cornerRadius(5)
                     }
-                    Image(systemName: "chevron.right")
+                    Spacer().frame(width:10)
                 }
                     .frame(width: proxy.size.width, height:proxy.size.height , alignment: .trailing) // New Code
             }
-        }
-        .onTapGesture {
-            // open detail view
         }
     }
 }

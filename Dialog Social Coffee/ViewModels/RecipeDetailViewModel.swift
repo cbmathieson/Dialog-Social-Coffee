@@ -7,20 +7,17 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 class RecipeDetailViewModel: ObservableObject  { // (6)
-  @Published var recipe: Recipe
-  
-  private var cancellables = Set<AnyCancellable>()
-  
-  init(recipe: Recipe) {
-    self.recipe = recipe
-
-    /*$recipe // (7)
-      .map { $0.id }
-      .assign(to: \.id, on: self)
-      .store(in: &cancellables)
-*/
-  }
+    @Published var recipe: Recipe
+    @Published var image: UIImage?
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(recipe: Recipe,image: UIImage?) {
+        self.recipe = recipe
+        self.image = image
+    }
 }
