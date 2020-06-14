@@ -40,7 +40,7 @@ struct BrewView: View {
             //MARK: LineChart
             GeometryReader { p in
                 VStack {
-                    LineChartSwiftUI(coordinates: self.$coordinates)
+                    LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
                         //use frame to change the graph size within your SwiftUI view
                         .frame(width: p.size.width, height: p.size.height, alignment: .center)
                 }
@@ -133,7 +133,7 @@ struct BrewView: View {
             Spacer()
         }
         .navigationBarTitle(Text("Brew"))
-        .navigationBarItems(trailing: state == .done ? NavigationLink("Next",destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates)) : nil)
+        .navigationBarItems(trailing: state == .done ? NavigationLink("Next",destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates)).isDetailLink(false) : nil)
     }
     
     //MARK: Helper Funcs

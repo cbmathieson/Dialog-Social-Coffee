@@ -11,6 +11,7 @@ import Charts
 
 struct LineChartSwiftUI: UIViewRepresentable {
     @Binding var coordinates:[ChartDataEntry]
+    var templateCoordinates:[ChartDataEntry]
     let lineChart = LineChartView()
     
     func makeUIView(context: UIViewRepresentableContext<LineChartSwiftUI>) -> LineChartView {
@@ -28,7 +29,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         set.drawCirclesEnabled = false
         set.setColor(.red)
         
-        let dataSets = [set,createSetBoundary()]
+        let dataSets = [set,getTemplateSet(),createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
         
         // change data styling
@@ -44,7 +45,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
     // line chart creation + styling
     func setUpChart() {
         //get data + set boundary
-        let dataSets = [getLineChartDataSet(),createSetBoundary()]
+        let dataSets = [getLineChartDataSet(),getTemplateSet(),createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
         
         // change data styling
@@ -75,6 +76,19 @@ struct LineChartSwiftUI: UIViewRepresentable {
         lineChart.setScaleEnabled(false)
         lineChart.backgroundColor = .white
         lineChart.legend.enabled = false
+        lineChart.isUserInteractionEnabled = false
+    }
+    
+    // Create template if one is passed
+    func getTemplateSet() -> LineChartDataSet {
+        let templateSet = LineChartDataSet(entries: self.templateCoordinates)
+        
+        // edit template set styling
+        templateSet.lineWidth = 3
+        templateSet.drawCirclesEnabled = false
+        templateSet.setColor(.lightGray)
+        
+        return templateSet
     }
     
     // line chart data point creation + styling

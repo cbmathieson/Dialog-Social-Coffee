@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,7 @@
 		212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */; };
 		212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58F824720FFA009873AE /* ConnectToScaleView.swift */; };
 		212F58FD2472219C009873AE /* BrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FC2472219C009873AE /* BrewView.swift */; };
-		212F58FF247224EC009873AE /* LineChartSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FE247224EC009873AE /* LineChartSwiftUI.swift */; };
+		212F58FF247224EC009873AE /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FE247224EC009873AE /* LineChartView.swift */; };
 		212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F5900247225A8009873AE /* AddRecipeInfoView.swift */; };
 		212F59032472F650009873AE /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59022472F650009873AE /* RecipeRepository.swift */; };
 		212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59042472F98A009873AE /* AppDelegate+Resolving.swift */; };
@@ -28,6 +28,9 @@
 		216BEAC32473583800A05CFF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC22473583800A05CFF /* CameraView.swift */; };
 		21BA34B72479F7C80080BCB2 /* AddRecipeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */; };
 		21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */; };
+		21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 21E15A8924959AB800AF3E19 /* QGrid */; };
+		21E15A8D2496925E00AF3E19 /* LineChartPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */; };
+		21E15A8F2496AFCF00AF3E19 /* LineChartDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */; };
 		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +50,7 @@
 		212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellViewModel.swift; sourceTree = "<group>"; };
 		212F58F824720FFA009873AE /* ConnectToScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToScaleView.swift; sourceTree = "<group>"; };
 		212F58FC2472219C009873AE /* BrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewView.swift; sourceTree = "<group>"; };
-		212F58FE247224EC009873AE /* LineChartSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartSwiftUI.swift; sourceTree = "<group>"; };
+		212F58FE247224EC009873AE /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		212F5900247225A8009873AE /* AddRecipeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoView.swift; sourceTree = "<group>"; };
 		212F59022472F650009873AE /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
 		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
@@ -55,6 +58,8 @@
 		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoViewModel.swift; sourceTree = "<group>"; };
 		21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartPreview.swift; sourceTree = "<group>"; };
+		21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDetail.swift; sourceTree = "<group>"; };
 		3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialog_Social_Coffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.release.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.release.xcconfig"; sourceTree = "<group>"; };
 		9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.debug.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */,
 				35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,13 +99,9 @@
 		212F58CD2470C1AA009873AE /* Dialog Social Coffee */ = {
 			isa = PBXGroup;
 			children = (
-				212F58CE2470C1AA009873AE /* AppDelegate.swift */,
-				212F59042472F98A009873AE /* AppDelegate+Resolving.swift */,
-				212F58D02470C1AA009873AE /* SceneDelegate.swift */,
-				212F58EB2470CCDE009873AE /* Repositories */,
-				212F58E52470C223009873AE /* Models */,
-				212F58EC2470CCF0009873AE /* ViewModels */,
-				212F58E82470C4AE009873AE /* Views */,
+				21BA34BF248096EF0080BCB2 /* App */,
+				21BA34BE24808AC60080BCB2 /* Backend */,
+				21BA34C02480970B0080BCB2 /* ui */,
 				212F58D72470C1AE009873AE /* Assets.xcassets */,
 				212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */,
 				212F58DF2470C1AE009873AE /* Info.plist */,
@@ -125,19 +127,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		212F58E82470C4AE009873AE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				212F58D52470C1AA009873AE /* TabbedView.swift */,
-				212F58E92470C4D8009873AE /* RecipeListView.swift */,
-				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
-				21BA34BB247B12FB0080BCB2 /* Use Recipe Views */,
-				212F58F424720B4C009873AE /* Create Recipe Views */,
-				212F58F3247207AC009873AE /* Reusable Views */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		212F58EB2470CCDE009873AE /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,57 +135,180 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		212F58EC2470CCF0009873AE /* ViewModels */ = {
+		212F58F3247207AC009873AE /* Reusable ui */ = {
+			isa = PBXGroup;
+			children = (
+				212F58F824720FFA009873AE /* ConnectToScaleView.swift */,
+				212F58FC2472219C009873AE /* BrewView.swift */,
+				21E15A8B249691FC00AF3E19 /* Charts */,
+				216BEAC22473583800A05CFF /* CameraView.swift */,
+			);
+			path = "Reusable ui";
+			sourceTree = "<group>";
+		};
+		21BA34BE24808AC60080BCB2 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				212F58EB2470CCDE009873AE /* Repositories */,
+				212F58E52470C223009873AE /* Models */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		21BA34BF248096EF0080BCB2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				212F58CE2470C1AA009873AE /* AppDelegate.swift */,
+				212F59042472F98A009873AE /* AppDelegate+Resolving.swift */,
+				212F58D02470C1AA009873AE /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		21BA34C02480970B0080BCB2 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				212F58D52470C1AA009873AE /* TabbedView.swift */,
+				21BA34C1248097750080BCB2 /* Feed */,
+				21BA34C4248097A10080BCB2 /* Discover */,
+				21BA34C5248097AF0080BCB2 /* QuickBrew */,
+				21BA34C32480978E0080BCB2 /* Lab */,
+				21BA34C22480977D0080BCB2 /* Profile */,
+				212F58F3247207AC009873AE /* Reusable ui */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		21BA34C1248097750080BCB2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34CD248099210080BCB2 /* Views */,
+				21BA34CC2480991A0080BCB2 /* View Models */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		21BA34C22480977D0080BCB2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34CE248099280080BCB2 /* Views */,
+				21BA34CF248099300080BCB2 /* View Models */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		21BA34C32480978E0080BCB2 /* Lab */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34C6248098CE0080BCB2 /* Views */,
+				21BA34C7248098DB0080BCB2 /* View Models */,
+			);
+			path = Lab;
+			sourceTree = "<group>";
+		};
+		21BA34C4248097A10080BCB2 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34CA248099070080BCB2 /* Views */,
+				21BA34CB2480990F0080BCB2 /* View Models */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		21BA34C5248097AF0080BCB2 /* QuickBrew */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34C8248098F20080BCB2 /* Views */,
+				21BA34C9248098FD0080BCB2 /* View Models */,
+			);
+			path = QuickBrew;
+			sourceTree = "<group>";
+		};
+		21BA34C6248098CE0080BCB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				212F58E92470C4D8009873AE /* RecipeListView.swift */,
+				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
+				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21BA34C7248098DB0080BCB2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				212F58ED2470CD77009873AE /* RecipeListViewModel.swift */,
 				212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */,
 				216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */,
-				21BA34BA247B12E70080BCB2 /* Use Recipe View Models */,
-				212F58F524720B6F009873AE /* Create Recipe View Models */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		212F58F3247207AC009873AE /* Reusable Views */ = {
-			isa = PBXGroup;
-			children = (
-				212F58FE247224EC009873AE /* LineChartSwiftUI.swift */,
-				216BEAC22473583800A05CFF /* CameraView.swift */,
-			);
-			path = "Reusable Views";
-			sourceTree = "<group>";
-		};
-		212F58F424720B4C009873AE /* Create Recipe Views */ = {
-			isa = PBXGroup;
-			children = (
-				212F58F824720FFA009873AE /* ConnectToScaleView.swift */,
-				212F58FC2472219C009873AE /* BrewView.swift */,
-				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
-			);
-			path = "Create Recipe Views";
-			sourceTree = "<group>";
-		};
-		212F58F524720B6F009873AE /* Create Recipe View Models */ = {
-			isa = PBXGroup;
-			children = (
 				21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */,
 			);
-			path = "Create Recipe View Models";
+			path = "View Models";
 			sourceTree = "<group>";
 		};
-		21BA34BA247B12E70080BCB2 /* Use Recipe View Models */ = {
+		21BA34C8248098F20080BCB2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Use Recipe View Models";
+			path = Views;
 			sourceTree = "<group>";
 		};
-		21BA34BB247B12FB0080BCB2 /* Use Recipe Views */ = {
+		21BA34C9248098FD0080BCB2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Use Recipe Views";
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		21BA34CA248099070080BCB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21BA34CB2480990F0080BCB2 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		21BA34CC2480991A0080BCB2 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		21BA34CD248099210080BCB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21BA34CE248099280080BCB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21BA34CF248099300080BCB2 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		21E15A8B249691FC00AF3E19 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				212F58FE247224EC009873AE /* LineChartView.swift */,
+				21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */,
+				21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		5C826C14B0156354B4A373CC /* Frameworks */ = {
@@ -234,6 +346,9 @@
 			dependencies = (
 			);
 			name = "Dialog Social Coffee";
+			packageProductDependencies = (
+				21E15A8924959AB800AF3E19 /* QGrid */,
+			);
 			productName = "Dialog Social Coffee";
 			productReference = 212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */;
 			productType = "com.apple.product-type.application";
@@ -262,6 +377,9 @@
 				Base,
 			);
 			mainGroup = 212F58C22470C1AA009873AE;
+			packageReferences = (
+				21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */,
+			);
 			productRefGroup = 212F58CC2470C1AA009873AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -340,9 +458,11 @@
 				212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */,
 				212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */,
 				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
-				212F58FF247224EC009873AE /* LineChartSwiftUI.swift in Sources */,
+				212F58FF247224EC009873AE /* LineChartView.swift in Sources */,
 				216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */,
+				21E15A8D2496925E00AF3E19 /* LineChartPreview.swift in Sources */,
 				212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */,
+				21E15A8F2496AFCF00AF3E19 /* LineChartDetail.swift in Sources */,
 				212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */,
 				212F58D62470C1AA009873AE /* TabbedView.swift in Sources */,
 				212F59032472F650009873AE /* RecipeRepository.swift in Sources */,
@@ -544,6 +664,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21E15A8924959AB800AF3E19 /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		212F58D22470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld */ = {

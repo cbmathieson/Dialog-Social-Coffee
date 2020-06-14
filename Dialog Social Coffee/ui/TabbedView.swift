@@ -18,19 +18,19 @@ struct TabbedView: View {
                 .tabItem {
                     VStack {
                         Image("first")
-                        Text("First")
+                        Text("Lab")
                     }
                 }
                 .tag(0)
-            Text("Second View")
+            /*Text("Second View")
                 .font(.title)
                 .tabItem {
                     VStack {
                         Image("second")
-                        Text("Second")
+                        Text("Profile")
                     }
                 }
-                .tag(1)
+                .tag(1)*/
         }
     }
 }

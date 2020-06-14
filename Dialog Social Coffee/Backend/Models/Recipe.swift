@@ -8,12 +8,12 @@
 
 import Foundation
 import SwiftUI
+import Charts
 
 struct Recipe : Codable, Identifiable {
     // Basic Info
     var id: String = UUID().uuidString
     var title:String
-    var image:String
     var comments:String
     // Brew Parameters
     var coffee_in:Double
@@ -34,8 +34,18 @@ struct Recipe : Codable, Identifiable {
         }
         return 0
     }
-
+    
     var brew_ratio: String {
         return "1:" + String(format: "%.1f",coffee_out/coffee_in)
+    }
+    
+    var coordinates: [ChartDataEntry] {
+        var set:[ChartDataEntry] = []
+        var counter = 0
+        for index in self.brew_curve {
+            set.append(ChartDataEntry(x: 0.25*Double(counter),y: index))
+            counter += 1
+        }
+        return set
     }
 }

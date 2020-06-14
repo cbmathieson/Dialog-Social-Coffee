@@ -8,36 +8,23 @@
 
 import SwiftUI
 import AcaiaSDK
-import SkaleKit
 
 struct ConnectToScaleView: View {
     
     @Binding var isPresented: Bool
     
-    @State private var scaleSelection = 1
     @State var connection:Connection = .none
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Picker(selection: $scaleSelection, label: Text("Choose Scale")) {
-                    Text("acaia").tag(1)
-                    Text("Skale").tag(2)
-                }.pickerStyle(SegmentedPickerStyle())
-                if scaleSelection == 1 {
-                    AcaiaConnectionView(connection: $connection)
-                } else {
-                    SkaleConnectionView(connection: $connection)
-                }
-                
-            }.navigationBarTitle("Connect")
-                .navigationBarItems(trailing: connection != .none ? NavigationLink("Brew",destination: BrewView(isPresented: self.$isPresented,connection: $connection)) : nil)
-        }
+        
+        AcaiaConnectionView(connection: $connection)
+        .navigationBarTitle("Connect")
+        .navigationBarItems(trailing: connection != .none ? NavigationLink("Brew",destination: BrewView(isPresented: self.$isPresented,connection: $connection)).isDetailLink(false) : nil)
     }
 }
 
 enum Connection {
-    case none,acaia,skale
+    case none,acaia
 }
 
 //MARK: Acaia Scale Connection
@@ -68,7 +55,7 @@ struct AcaiaConnectionView: View {
             //MARK: Prompt + Picker
             Text("\(prompt)")
             if state == .searching || state == .connecting || state == .disconnecting {
-                    Text("")
+                Text("")
                     .onReceive(finishedScanPub) { _ in
                         self.finishedScan()
                 }
@@ -119,7 +106,7 @@ struct AcaiaConnectionView: View {
                         scale.disconnect()
                     }
                 }) {
-                    Text("disconnects broken 🖕🏼 acaia")
+                    Text("disconnects broken, silly acaia")
                 }
             } else {
                 Button(action: {}) {
@@ -192,16 +179,5 @@ struct AcaiaConnectionView: View {
     
     enum ConnectionState {
         case loaded,searching,found,connecting,connected,disconnecting
-    }
-}
-
-//MARK: Skale 2 Connection
-
-struct SkaleConnectionView: View {
-    
-    @Binding var connection:Connection
-    
-    var body: some View {
-        Text("gl future craig")
     }
 }

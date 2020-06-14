@@ -10,14 +10,12 @@ import Foundation
 import SwiftUI
 import Combine
 
-class RecipeDetailViewModel: ObservableObject  { // (6)
+class RecipeDetailViewModel: ObservableObject  {
     @Published var recipe: Recipe
-    @Published var image: UIImage?
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(recipe: Recipe,image: UIImage?) {
+    init(recipe: Recipe) {
         self.recipe = recipe
-        self.image = image
     }
 }

@@ -35,10 +35,14 @@ class RecipeListViewModel: ObservableObject { // (1)
         .store(in: &cancellables)
     }
     
-    func removeRecipes(atOffsets indexSet: IndexSet) { // (4)
+    func removeRecipe(recipe: Recipe) {
+        recipeRepository.removeRecipe(recipe)
+    }
+    
+    /*func removeRecipes(atOffsets indexSet: IndexSet) { // (4)
         let viewModels = indexSet.lazy.map { self.recipeCellViewModels[$0] }
         viewModels.forEach { recipeCellViewModel in
             recipeRepository.removeRecipe(recipeCellViewModel.recipe)
         }
-    }
+    }*/
 }
