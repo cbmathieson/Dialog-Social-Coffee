@@ -17,21 +17,12 @@ struct TabbedView: View {
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image("first")
+                        Image(systemName: "lightbulb")
                         Text("Lab")
                     }
                 }
                 .tag(0)
-            /*Text("Second View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("second")
-                        Text("Profile")
-                    }
-                }
-                .tag(1)*/
-        }
+        }.accentColor(.black)
     }
 }
 

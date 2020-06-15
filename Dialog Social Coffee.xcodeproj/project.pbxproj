@@ -18,7 +18,6 @@
 		212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58E92470C4D8009873AE /* RecipeListView.swift */; };
 		212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58ED2470CD77009873AE /* RecipeListViewModel.swift */; };
 		212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */; };
-		212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58F824720FFA009873AE /* ConnectToScaleView.swift */; };
 		212F58FD2472219C009873AE /* BrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FC2472219C009873AE /* BrewView.swift */; };
 		212F58FF247224EC009873AE /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F58FE247224EC009873AE /* LineChartView.swift */; };
 		212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F5900247225A8009873AE /* AddRecipeInfoView.swift */; };
@@ -31,6 +30,10 @@
 		21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 21E15A8924959AB800AF3E19 /* QGrid */; };
 		21E15A8D2496925E00AF3E19 /* LineChartPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */; };
 		21E15A8F2496AFCF00AF3E19 /* LineChartDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */; };
+		21E15A922496ED5C00AF3E19 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 21E15A912496ED5C00AF3E19 /* PartialSheet */; };
+		21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */; };
+		21E15A9624972F4900AF3E19 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */; };
+		21E15A982497416E00AF3E19 /* UseBrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A972497416D00AF3E19 /* UseBrewView.swift */; };
 		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +51,6 @@
 		212F58E92470C4D8009873AE /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		212F58ED2470CD77009873AE /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		212F58EF2470CF71009873AE /* RecipeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCellViewModel.swift; sourceTree = "<group>"; };
-		212F58F824720FFA009873AE /* ConnectToScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectToScaleView.swift; sourceTree = "<group>"; };
 		212F58FC2472219C009873AE /* BrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewView.swift; sourceTree = "<group>"; };
 		212F58FE247224EC009873AE /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		212F5900247225A8009873AE /* AddRecipeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,9 @@
 		21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartPreview.swift; sourceTree = "<group>"; };
 		21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDetail.swift; sourceTree = "<group>"; };
+		21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleConnectionPartialView.swift; sourceTree = "<group>"; };
+		21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		21E15A972497416D00AF3E19 /* UseBrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseBrewView.swift; sourceTree = "<group>"; };
 		3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialog_Social_Coffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.release.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.release.xcconfig"; sourceTree = "<group>"; };
 		9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.debug.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E15A922496ED5C00AF3E19 /* PartialSheet in Frameworks */,
 				21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */,
 				35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */,
 			);
@@ -138,10 +144,11 @@
 		212F58F3247207AC009873AE /* Reusable ui */ = {
 			isa = PBXGroup;
 			children = (
-				212F58F824720FFA009873AE /* ConnectToScaleView.swift */,
+				21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */,
 				212F58FC2472219C009873AE /* BrewView.swift */,
 				21E15A8B249691FC00AF3E19 /* Charts */,
 				216BEAC22473583800A05CFF /* CameraView.swift */,
+				21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */,
 			);
 			path = "Reusable ui";
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 			children = (
 				212F58E92470C4D8009873AE /* RecipeListView.swift */,
 				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
+				21E15A972497416D00AF3E19 /* UseBrewView.swift */,
 				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
 			);
 			path = Views;
@@ -348,6 +356,7 @@
 			name = "Dialog Social Coffee";
 			packageProductDependencies = (
 				21E15A8924959AB800AF3E19 /* QGrid */,
+				21E15A912496ED5C00AF3E19 /* PartialSheet */,
 			);
 			productName = "Dialog Social Coffee";
 			productReference = 212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */;
@@ -379,6 +388,7 @@
 			mainGroup = 212F58C22470C1AA009873AE;
 			packageReferences = (
 				21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */,
+				21E15A902496ED5C00AF3E19 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 212F58CC2470C1AA009873AE /* Products */;
 			projectDirPath = "";
@@ -453,10 +463,11 @@
 				21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */,
 				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
 				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
+				21E15A982497416E00AF3E19 /* UseBrewView.swift in Sources */,
+				21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */,
 				212F58FD2472219C009873AE /* BrewView.swift in Sources */,
 				212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */,
 				212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */,
-				212F58F924720FFA009873AE /* ConnectToScaleView.swift in Sources */,
 				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
 				212F58FF247224EC009873AE /* LineChartView.swift in Sources */,
 				216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */,
@@ -464,6 +475,7 @@
 				212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */,
 				21E15A8F2496AFCF00AF3E19 /* LineChartDetail.swift in Sources */,
 				212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */,
+				21E15A9624972F4900AF3E19 /* ActivityIndicator.swift in Sources */,
 				212F58D62470C1AA009873AE /* TabbedView.swift in Sources */,
 				212F59032472F650009873AE /* RecipeRepository.swift in Sources */,
 				212F58D42470C1AA009873AE /* Dialog_Social_Coffee.xcdatamodeld in Sources */,
@@ -674,6 +686,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		21E15A902496ED5C00AF3E19 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -681,6 +701,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */;
 			productName = QGrid;
+		};
+		21E15A912496ED5C00AF3E19 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21E15A902496ED5C00AF3E19 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 

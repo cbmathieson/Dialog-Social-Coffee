@@ -8,43 +8,74 @@
 
 import SwiftUI
 import Charts
+import AcaiaSDK
+import PartialSheet
 
 struct RecipeDetailView: View {
     @ObservedObject var recipeDetailVM: RecipeDetailViewModel
-    @State var showScaleConnectionScreen:Bool = false
+    @EnvironmentObject var partialSheet: PartialSheetManager
     @State var coordinates:[ChartDataEntry] = []
+    
+    @State var useBrewPagePresented:Bool = false
+    @State var partialSheetPresented:Bool = false
     
     var body: some View {
         VStack {
-            HStack {
-                Text(String(format: "%.1f",recipeDetailVM.recipe.coffee_in))
-                Text("->")
-                Text(String(format: "%.1f",recipeDetailVM.recipe.coffee_out))
-                Text("in")
-                Text(String(format: "%.0f",recipeDetailVM.recipe.time) + "s")
+            
+            /*
+             From partialsheet, programatically present navigation
+             */
+            NavigationLink(destination: UseBrewView(),isActive: self.$useBrewPagePresented){
+                EmptyView()
             }
-            Text(recipeDetailVM.recipe.comments)
-                .font(.footnote)
-            LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
+            .isDetailLink(false)
+            
+            HStack {
+                Text(recipeDetailVM.recipe.comments)
+                    .font(.body).bold()
+                    .frame(alignment: .leading)
+                Spacer()
+            }
+            .padding()
+            VStack {
+                HStack {
+                Text("\(String(format: "%.0f",recipeDetailVM.recipe.time))s").font(.body).bold()
+                    Spacer()
+                }
+                Spacer(minLength: 10)
+                HStack {
+                    
+                    Text("\(String(format: "%.1f",recipeDetailVM.recipe.coffee_in))g  →  \(String(format: "%.1f",recipeDetailVM.recipe.coffee_out))g").font(.body).bold()
+                    Spacer()
+                }
+            }
+            .padding()
+            LineChartDetail(coordinates: self.$coordinates,templateCoordinates: recipeDetailVM.recipe.coordinates)
                 //use frame to change the graph size within your SwiftUI view
                 .frame(width: 300, height: 300)
+                .padding()
             Button(action: {
-                self.showScaleConnectionScreen.toggle()
+                if let scale = AcaiaManager.shared().connectedScale {
+                    print("Already connected to \(String(describing: scale.name))")
+                    self.useBrewPagePresented = true
+                } else {
+                    self.partialSheet.showPartialSheet({
+                    }) {
+                        ScaleConnectionPartialView(didConnect: self.$useBrewPagePresented)
+                    }
+                }
             }) {
-                Text("Use Recipe")
+                Text("use recipe")
+                    .font(.body).bold()
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.black)
             }
-            .sheet(isPresented: self.$showScaleConnectionScreen) {
-                Text("Go team")
-            }
+            .padding()
+            Spacer()
         }
+        .foregroundColor(.black)
         .navigationBarTitle("\(recipeDetailVM.recipe.title)")
-        .onAppear(perform: {
-            var counter:Double = 0
-            for i in self.recipeDetailVM.recipe.brew_curve {
-                self.coordinates.append(ChartDataEntry(x: counter * 0.25,y: i))
-                counter += 1
-            }
-        })
     }
 }
 

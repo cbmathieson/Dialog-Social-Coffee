@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import PartialSheet
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,9 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Get the managed object context from the shared persistent container.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+        // 1.1 Create the partial sheet manager
+        let sheetManager: PartialSheetManager = PartialSheetManager()
+        
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = TabbedView().environment(\.managedObjectContext, context)
+        // Also add the sheet manager environment object
+        let contentView = TabbedView().environment(\.managedObjectContext, context).environmentObject(sheetManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

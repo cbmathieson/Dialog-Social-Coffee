@@ -16,7 +16,6 @@ import Combine
 struct BrewView: View {
     
     @Binding var isPresented: Bool
-    @Binding var connection:Connection
     
     @State var coordinates = [ChartDataEntry(x:0,y:0)]
     

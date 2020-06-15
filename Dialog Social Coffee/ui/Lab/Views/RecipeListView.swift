@@ -18,6 +18,8 @@
 import SwiftUI
 import Charts
 import QGrid
+import AcaiaSDK
+import PartialSheet
 
 struct RecipeListView: View {
     
@@ -25,6 +27,7 @@ struct RecipeListView: View {
     @State var showRecipeCreation = false
     @State var showRecipeDetail = false
     
+    @EnvironmentObject var partialSheet: PartialSheetManager
     @State private var connectionActionSheetVisible = false
     @State private var recipeActionSheetVisible = false
     
@@ -43,7 +46,7 @@ struct RecipeListView: View {
                  Current SwiftUI bug for popping to root from navbaritem. Will clean up
                  when fixed
                  */
-                NavigationLink(destination: ConnectToScaleView(isPresented: self.$showRecipeCreation),isActive: $showRecipeCreation){
+                NavigationLink(destination: BrewView(isPresented: self.$showRecipeCreation),isActive: $showRecipeCreation){
                     EmptyView()
                 }
                 .isDetailLink(false)
@@ -88,10 +91,22 @@ struct RecipeListView: View {
             }
             .navigationBarTitle("Lab")
             .navigationBarItems(trailing:
-                Button(action: { self.showRecipeCreation = true }) { // (6)
+                Button(action: {
+                    if let scale = AcaiaManager.shared().connectedScale {
+                        print("Already connected to \(String(describing: scale.name))")
+                        self.showRecipeCreation = true
+                    } else {
+                        self.partialSheet.showPartialSheet({
+                        }) {
+                            ScaleConnectionPartialView(didConnect: self.$showRecipeCreation)
+                        }
+                    }
+                }) { // (6)
                     Text("+").foregroundColor(.black)
             })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .addPartialSheet()
     }
 }
 
@@ -111,12 +126,12 @@ struct RecipeCell: View {
                 LineChartPreview(coordinates: self.recipeCellVM.recipe.coordinates).frame(width: p.size.width, height: 100, alignment: .center)
             }
             Spacer().frame(height: 100) // geometry reader is causing overlapping so had to add
-            HStack(alignment: .bottom) {
-                Text("\(String(format: "%.0f",self.recipeCellVM.recipe.time))s").font(.footnote)
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text("\(String(format: "%.1f",self.recipeCellVM.recipe.coffee_in))g").font(.footnote)
-                    Text(" → " + "\(String(format: "%.1f",self.recipeCellVM.recipe.coffee_out))g").font(.footnote)
+            VStack(alignment: .center) {
+                Text(" \(String(format: "%.0f",self.recipeCellVM.recipe.time))s").font(.footnote)
+                HStack {
+                    Text("\(String(format: "%.1f",self.recipeCellVM.recipe.coffee_in))g  →  \(String(format: "%.1f",self.recipeCellVM.recipe.coffee_out))g").font(.footnote)
+                    /*Text(" → ").font(.footnote)
+                    Text("\(String(format: "%.1f",self.recipeCellVM.recipe.coffee_out))g").font(.footnote)*/
                 }
             }.padding()
         }

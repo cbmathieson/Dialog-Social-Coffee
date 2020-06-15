@@ -1,39 +1,41 @@
 //
-//  ConnectToScaleView.swift
+//  ScaleConnectionPartialView.swift
 //  Dialog Social Coffee
 //
-//  Created by Craig Mathieson on 2020-05-17.
+//  Created by Craig Mathieson on 2020-06-14.
 //  Copyright © 2020 Craig Mathieson. All rights reserved.
 //
 
 import SwiftUI
 import AcaiaSDK
+import PartialSheet
 
-struct ConnectToScaleView: View {
+struct ScaleConnectionPartialView: View {
     
-    @Binding var isPresented: Bool
-    
-    @State var connection:Connection = .none
+    @Binding var didConnect:Bool
     
     var body: some View {
-        
-        AcaiaConnectionView(connection: $connection)
-        .navigationBarTitle("Connect")
-        .navigationBarItems(trailing: connection != .none ? NavigationLink("Brew",destination: BrewView(isPresented: self.$isPresented,connection: $connection)).isDetailLink(false) : nil)
+        VStack(alignment: .center) {
+            Text("Connect to Scale").font(.title).padding()
+            Image("acaia_scale")
+                .resizable()
+                .frame(width: 100,height:100)
+                .padding(.bottom)
+            AcaiaConnectionStatus(didConnect: $didConnect).padding(.bottom)
+        }
     }
-}
-
-enum Connection {
-    case none,acaia
 }
 
 //MARK: Acaia Scale Connection
 
 // This is NOT MVVM - will need to clean up in the future
 
-struct AcaiaConnectionView: View {
+struct AcaiaConnectionStatus: View {
     
-    @Binding var connection:Connection
+    @Binding var didConnect:Bool
+    
+    @EnvironmentObject var partialSheet: PartialSheetManager
+    @State private var shouldAnimate = false
     
     @State private var prompt = "Hit Search to find nearby scales"
     @State private var state:ConnectionState = .loaded
@@ -45,76 +47,53 @@ struct AcaiaConnectionView: View {
         .publisher(for: NSNotification.Name(rawValue: AcaiaScaleDidFinishScan))
     let connectedPub = NotificationCenter.default
         .publisher(for: NSNotification.Name(rawValue: AcaiaScaleDidConnected))
-    let disconnectedPub = NotificationCenter.default
-        .publisher(for: NSNotification.Name(rawValue: AcaiaScaleDidDisconnected))
     
     //MARK: View
     var body: some View {
         VStack {
-            Spacer()
-            //MARK: Prompt + Picker
-            Text("\(prompt)")
-            if state == .searching || state == .connecting || state == .disconnecting {
-                Text("")
+            if state == .searching || state == .connecting {
+                ActivityIndicator(shouldAnimate: self.$shouldAnimate).padding()
                     .onReceive(finishedScanPub) { _ in
                         self.finishedScan()
                 }
                 .onReceive(connectedPub) { _ in
                     self.onConnect()
                 }
-                .onReceive(disconnectedPub) { _ in
-                    self.onDisconnect()
-                }
+                Text("")
             } else if state == .found {
-                Picker(selection: $selectedScale,label: Text("Scales in range:")) {
-                    ForEach(acaiaScales,id: \.self) { scale in
-                        Text(scale.name)
+                    Picker(selection: $selectedScale,label: Text("")) {
+                        ForEach(acaiaScales,id: \.self) { scale in
+                            Text(scale.name)
+                        }
                     }
-                }
-                .pickerStyle(WheelPickerStyle())
-                .labelsHidden()
-            }
-            Spacer()
-            //MARK: Action Buttons
-            if state == .loaded {
+                    .pickerStyle(WheelPickerStyle())
+                    .labelsHidden()
+                    Button(action: {
+                        if let scale = AcaiaManager.shared().scaleList?[self.selectedScale] as? AcaiaScale {
+                            self.shouldAnimate = true
+                            self.state = .connecting
+                            scale.connect()
+                            self.startConnectTimer()
+                        }
+                    }) {
+                        Text("Pair")
+                    }
+            } else if state == .loaded {
+                Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
                 Button(action: {
                     // Scan and add scales to state array
                     self.acaiaScales = []
                     self.state = .searching
-                    self.prompt = "Searching..."
+                    self.shouldAnimate = true
                     AcaiaManager.shared().startScan(2.5)
                 }) {
                     Text("Search")
                 }
-            } else if state == .found {
-                Button(action: {
-                    if let scale = AcaiaManager.shared().scaleList?[self.selectedScale] as? AcaiaScale{
-                        self.prompt = "Connecting to \(scale.name ?? "")..."
-                        self.state = .connecting
-                        scale.connect()
-                        self.startConnectTimer()
-                    }
-                }) {
-                    Text("Pair")
-                }
             } else if state == .connected {
-                Button(action: {
-                    self.acaiaScales = []
-                    if let scale = AcaiaManager.shared().connectedScale {
-                        self.state = .disconnecting
-                        self.prompt = "Disconnecting..."
-                        scale.disconnect()
-                    }
-                }) {
-                    Text("disconnects broken, silly acaia")
-                }
-            } else {
-                Button(action: {}) {
-                    Text("Pair")
-                }
-                .hidden()
+                Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
+                Text("")
             }
-            Spacer()
+            
         }
         .onAppear(perform: { self.checkConnection() })
     }
@@ -123,11 +102,9 @@ struct AcaiaConnectionView: View {
         if let scale = AcaiaManager.shared().connectedScale {
             self.prompt = "Connected to: \(scale.name ?? "?")"
             self.state = .connected
-            self.connection = .acaia
         } else {
             self.prompt = "Hit Search to find nearby scales"
             self.state = .loaded
-            self.connection = .none
         }
     }
     
@@ -144,22 +121,22 @@ struct AcaiaConnectionView: View {
     
     // Update UI after connection
     private func onConnect() {
+        self.shouldAnimate = true
         if let scale = AcaiaManager.shared().connectedScale {
             self.prompt = "Connected to: \(scale.name ?? "?")"
             self.state = .connected
-            self.connection = .acaia
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.partialSheet.closePartialSheet()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.didConnect = true
+                }
+            }
         }
-    }
-    
-    // Update UI after disconnecting
-    private func onDisconnect() {
-        self.prompt = "Disconnected from scale"
-        self.state = .loaded
-        self.connection = .none
     }
     
     // Update array with scales found and update state
     private func finishedScan() {
+        self.shouldAnimate = false
         var scales:[AcaiaScale] = []
         for newScale in AcaiaManager.shared().scaleList {
             if let unwrappedScale = newScale as? AcaiaScale {
@@ -167,7 +144,6 @@ struct AcaiaConnectionView: View {
             }
         }
         self.acaiaScales = scales
-        print("# scales found: \(self.acaiaScales.count)")
         if self.acaiaScales.count == 0 {
             self.prompt = "No scales found :("
             self.state = .loaded
@@ -178,6 +154,7 @@ struct AcaiaConnectionView: View {
     }
     
     enum ConnectionState {
-        case loaded,searching,found,connecting,connected,disconnecting
+        case loaded,searching,found,connecting,connected
     }
 }
+
