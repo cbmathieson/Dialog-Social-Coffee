@@ -33,7 +33,6 @@
 		21E15A922496ED5C00AF3E19 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 21E15A912496ED5C00AF3E19 /* PartialSheet */; };
 		21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */; };
 		21E15A9624972F4900AF3E19 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */; };
-		21E15A982497416E00AF3E19 /* UseBrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A972497416D00AF3E19 /* UseBrewView.swift */; };
 		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +63,6 @@
 		21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartDetail.swift; sourceTree = "<group>"; };
 		21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleConnectionPartialView.swift; sourceTree = "<group>"; };
 		21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		21E15A972497416D00AF3E19 /* UseBrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseBrewView.swift; sourceTree = "<group>"; };
 		3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialog_Social_Coffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6811DE5EFA1ECD71B56795CA /* Pods-Dialog Social Coffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.release.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.release.xcconfig"; sourceTree = "<group>"; };
 		9F2E57E532CE10C15C272400 /* Pods-Dialog Social Coffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialog Social Coffee.debug.xcconfig"; path = "Target Support Files/Pods-Dialog Social Coffee/Pods-Dialog Social Coffee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +234,7 @@
 				212F58E92470C4D8009873AE /* RecipeListView.swift */,
 				21E15A992498898A00AF3E19 /* New Recipe */,
 				21E15A9A2498899C00AF3E19 /* Use Recipe */,
+				212F58FC2472219C009873AE /* BrewView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,7 +319,6 @@
 		21E15A992498898A00AF3E19 /* New Recipe */ = {
 			isa = PBXGroup;
 			children = (
-				212F58FC2472219C009873AE /* BrewView.swift */,
 				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
 			);
 			path = "New Recipe";
@@ -330,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
-				21E15A972497416D00AF3E19 /* UseBrewView.swift */,
 			);
 			path = "Use Recipe";
 			sourceTree = "<group>";
@@ -479,7 +476,6 @@
 				21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */,
 				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
 				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
-				21E15A982497416E00AF3E19 /* UseBrewView.swift in Sources */,
 				21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */,
 				212F58FD2472219C009873AE /* BrewView.swift in Sources */,
 				212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */,

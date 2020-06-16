@@ -52,8 +52,5 @@ struct AddRecipeInfoView: View {
                 }
             }
         }
-            //.navigationBarHidden(true)
-            //.navigationBarTitle(Text(""))
-            //.edgesIgnoringSafeArea([.top, .bottom])
     }
 }

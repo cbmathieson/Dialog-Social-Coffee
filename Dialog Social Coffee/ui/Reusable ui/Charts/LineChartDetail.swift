@@ -64,7 +64,7 @@ struct LineChartDetail: UIViewRepresentable {
         set.lineWidth = 4
         set.drawCirclesEnabled = false
         set.setColor(.black)
-        set.mode = .cubicBezier
+        set.mode = .horizontalBezier
         set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
         set.drawFilledEnabled = true
         

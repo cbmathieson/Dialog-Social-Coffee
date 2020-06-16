@@ -16,6 +16,8 @@ import Combine
 struct BrewView: View {
     
     @Binding var isPresented: Bool
+    var templateCoordinates:[ChartDataEntry]
+    
     @State var showInfoPage:Bool = false
     
     @State var coordinates = [ChartDataEntry(x:0,y:0)]
@@ -38,7 +40,7 @@ struct BrewView: View {
     var body: some View {
         VStack {
             //MARK: LineChart
-            LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
+            LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
                 .frame(width: 300, height: 300)
                 .padding(.top)
             //MARK: Info Stack
@@ -170,7 +172,13 @@ struct BrewView: View {
         }
         .navigationBarTitle(Text("Brew"))
         .navigationBarItems(trailing: state == .done ? Button(action: {
-            self.showInfoPage = true
+            // if presented from detail list (templateCoordinates == []) go to addinfo
+            // else go back
+            if self.templateCoordinates.count > 0 {
+                self.isPresented = false
+            } else {
+                self.showInfoPage = true
+            }
         }) {
             Text("Done").font(.body)
             } : nil)

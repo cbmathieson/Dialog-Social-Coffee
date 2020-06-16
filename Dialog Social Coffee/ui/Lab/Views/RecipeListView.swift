@@ -46,7 +46,7 @@ struct RecipeListView: View {
                  Current SwiftUI bug for popping to root from navbaritem. Will clean up
                  when fixed
                  */
-                NavigationLink(destination: BrewView(isPresented: self.$showRecipeCreation),isActive: $showRecipeCreation){
+                NavigationLink(destination: BrewView(isPresented: self.$showRecipeCreation, templateCoordinates: []),isActive: $showRecipeCreation){
                     EmptyView()
                 }
                 .isDetailLink(false)

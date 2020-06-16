@@ -28,11 +28,11 @@ struct LineChartSwiftUI: UIViewRepresentable {
         set.lineWidth = 4
         set.drawCirclesEnabled = false
         set.setColor(.black)
-        set.mode = .cubicBezier
+        set.mode = .horizontalBezier
         set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
         set.drawFilledEnabled = true
         
-        let dataSets = [set,getTemplateSet(),createSetBoundary()]
+        let dataSets = [getTemplateSet(),set,createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
         
         // change data styling
@@ -48,7 +48,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
     // line chart creation + styling
     func setUpChart() {
         //get data + set boundary
-        let dataSets = [getLineChartDataSet(),getTemplateSet(),createSetBoundary()]
+        let dataSets = [getTemplateSet(),getLineChartDataSet(),createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
         
         // change data styling
@@ -88,6 +88,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         templateSet.lineWidth = 4
         templateSet.drawCirclesEnabled = false
         templateSet.setColor(.lightGray)
+        templateSet.mode = .horizontalBezier
         
         return templateSet
     }
@@ -100,7 +101,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         set.lineWidth = 4
         set.drawCirclesEnabled = false
         set.setColor(.black)
-        set.mode = .cubicBezier
+        set.mode = .horizontalBezier
         set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
         set.drawFilledEnabled = true
         

@@ -25,7 +25,7 @@ struct RecipeDetailView: View {
             /*
              From partialsheet, programatically present navigation
              */
-            NavigationLink(destination: UseBrewView(),isActive: self.$useBrewPagePresented){
+            NavigationLink(destination: BrewView(isPresented: self.$useBrewPagePresented, templateCoordinates: recipeDetailVM.recipe.coordinates),isActive: self.$useBrewPagePresented){
                 EmptyView()
             }
             .isDetailLink(false)
