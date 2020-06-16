@@ -20,7 +20,7 @@ struct ScaleConnectionPartialView: View {
             Image("acaia_scale")
                 .resizable()
                 .frame(width: 100,height:100)
-                .padding(.bottom)
+                //.padding(.bottom)
             AcaiaConnectionStatus(didConnect: $didConnect).padding(.bottom)
         }
     }
@@ -37,7 +37,7 @@ struct AcaiaConnectionStatus: View {
     @EnvironmentObject var partialSheet: PartialSheetManager
     @State private var shouldAnimate = false
     
-    @State private var prompt = "Hit Search to find nearby scales"
+    @State private var prompt = "find nearby scales"
     @State private var state:ConnectionState = .loaded
     @State private var selectedScale = 0
     @State private var acaiaScales:[AcaiaScale] = []
@@ -59,7 +59,7 @@ struct AcaiaConnectionStatus: View {
                 .onReceive(connectedPub) { _ in
                     self.onConnect()
                 }
-                Text("")
+                //Text("")
             } else if state == .found {
                     Picker(selection: $selectedScale,label: Text("")) {
                         ForEach(acaiaScales,id: \.self) { scale in
@@ -76,10 +76,14 @@ struct AcaiaConnectionStatus: View {
                             self.startConnectTimer()
                         }
                     }) {
-                        Text("Pair")
+                        Text("pair")
+                        .font(.body).bold()
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.black)
                     }
             } else if state == .loaded {
-                Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
+                Text("\(prompt)").font(.body).minimumScaleFactor(0.5).padding().multilineTextAlignment(.center)
                 Button(action: {
                     // Scan and add scales to state array
                     self.acaiaScales = []
@@ -87,24 +91,18 @@ struct AcaiaConnectionStatus: View {
                     self.shouldAnimate = true
                     AcaiaManager.shared().startScan(2.5)
                 }) {
-                    Text("Search")
+                    Text("search")
+                    .font(.body).bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.black)
                 }
             } else if state == .connected {
                 Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
                 Text("")
             }
-            
-        }
-        .onAppear(perform: { self.checkConnection() })
-    }
-    
-    private func checkConnection() {
-        if let scale = AcaiaManager.shared().connectedScale {
-            self.prompt = "Connected to: \(scale.name ?? "?")"
-            self.state = .connected
-        } else {
-            self.prompt = "Hit Search to find nearby scales"
-            self.state = .loaded
         }
     }
     
@@ -113,7 +111,7 @@ struct AcaiaConnectionStatus: View {
         // Delay of 5.0 seconds before checking if still trying
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             if self.state == .connecting {
-                self.prompt = "failed to connect, turn the scale off/on and try again"
+                self.prompt = "failed to connect\nturn the scale off/on and try again"
                 self.state = .loaded
             }
         }

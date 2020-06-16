@@ -145,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				21E15A93249704EE00AF3E19 /* ScaleConnectionPartialView.swift */,
-				212F58FC2472219C009873AE /* BrewView.swift */,
 				21E15A8B249691FC00AF3E19 /* Charts */,
 				216BEAC22473583800A05CFF /* CameraView.swift */,
 				21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */,
@@ -235,9 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				212F58E92470C4D8009873AE /* RecipeListView.swift */,
-				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
-				21E15A972497416D00AF3E19 /* UseBrewView.swift */,
-				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
+				21E15A992498898A00AF3E19 /* New Recipe */,
+				21E15A9A2498899C00AF3E19 /* Use Recipe */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +315,24 @@
 				21E15A8E2496AFCF00AF3E19 /* LineChartDetail.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		21E15A992498898A00AF3E19 /* New Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				212F58FC2472219C009873AE /* BrewView.swift */,
+				212F5900247225A8009873AE /* AddRecipeInfoView.swift */,
+			);
+			path = "New Recipe";
+			sourceTree = "<group>";
+		};
+		21E15A9A2498899C00AF3E19 /* Use Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */,
+				21E15A972497416D00AF3E19 /* UseBrewView.swift */,
+			);
+			path = "Use Recipe";
 			sourceTree = "<group>";
 		};
 		5C826C14B0156354B4A373CC /* Frameworks */ = {

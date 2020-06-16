@@ -25,9 +25,9 @@ struct LineChartSwiftUI: UIViewRepresentable {
         let set = LineChartDataSet(entries: self.coordinates)
         
         // edit set styling
-        set.lineWidth = 3
+        set.lineWidth = 4
         set.drawCirclesEnabled = false
-        set.setColor(.red)
+        set.setColor(.black)
         
         let dataSets = [set,getTemplateSet(),createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
@@ -50,27 +50,25 @@ struct LineChartSwiftUI: UIViewRepresentable {
         
         // change data styling
         data.setDrawValues(false)
-        data.setValueFont(.systemFont(ofSize: 7, weight: .light))
         lineChart.data = data
         
         //set y axis stuff
         lineChart.rightAxis.enabled = false
         let YAxis = lineChart.leftAxis
-        YAxis.labelFont = .boldSystemFont(ofSize: 12)
-        YAxis.setLabelCount(5, force: false)
         YAxis.labelTextColor = .black
-        YAxis.axisLineColor = .gray
-        YAxis.labelPosition = .outsideChart
+        YAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
+        YAxis.drawAxisLineEnabled = false
         
         //set x axis stuff
+        //lineChart.xAxis.drawLabelsEnabled = false
+        lineChart.xAxis.drawAxisLineEnabled = false
         lineChart.xAxis.labelPosition = .bottom
-        lineChart.xAxis.labelFont = .boldSystemFont(ofSize: 12)
-        lineChart.xAxis.setLabelCount(5, force: false)
-        lineChart.xAxis.labelTextColor = .black
-        lineChart.xAxis.axisLineColor = .gray
         
         //line chart stuff
         lineChart.xAxis.gridColor = .clear
+        lineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
+        lineChart.xAxis.setLabelCount(5, force: false)
+        lineChart.xAxis.labelTextColor = .black
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
@@ -84,7 +82,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         let templateSet = LineChartDataSet(entries: self.templateCoordinates)
         
         // edit template set styling
-        templateSet.lineWidth = 3
+        templateSet.lineWidth = 4
         templateSet.drawCirclesEnabled = false
         templateSet.setColor(.lightGray)
         
@@ -96,9 +94,9 @@ struct LineChartSwiftUI: UIViewRepresentable {
         let set = LineChartDataSet(entries: coordinates)
         
         // edit set styling
-        set.lineWidth = 3
+        set.lineWidth = 4
         set.drawCirclesEnabled = false
-        set.setColor(.red)
+        set.setColor(.black)
         return set
     }
     

@@ -16,6 +16,7 @@ import Combine
 struct BrewView: View {
     
     @Binding var isPresented: Bool
+    @State var showInfoPage:Bool = false
     
     @State var coordinates = [ChartDataEntry(x:0,y:0)]
     
@@ -37,25 +38,25 @@ struct BrewView: View {
     var body: some View {
         VStack {
             //MARK: LineChart
-            GeometryReader { p in
-                VStack {
-                    LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
-                        //use frame to change the graph size within your SwiftUI view
-                        .frame(width: p.size.width, height: p.size.height, alignment: .center)
-                }
-            }
+            LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
+                .frame(width: 300, height: 300)
+                .padding()
             //MARK: Info Stack
-            HStack {
+            HStack(alignment: .center) {
                 Spacer()
                 VStack {
+                    Spacer()
                     //
                     Text(self.state == .loaded ? "\(String(format: "%.1f",lastWeight))" : "\(String(format: "%.1f",self.brewCoordinates[self.brewCoordinates.count-1]))")
-                    Text("grams")
-                    .onReceive(weightPub) { (output) in
-                        let unit = output.userInfo![AcaiaScaleUserInfoKeyUnit]! as! NSNumber
-                        let weight = output.userInfo![AcaiaScaleUserInfoKeyWeight]! as! Float
-                        self.onWeight(unit: unit,newWeight: weight)
+                        .font(.title).bold()
+                    Text("(g)")
+                        .font(.headline).bold()
+                        .onReceive(weightPub) { (output) in
+                            let unit = output.userInfo![AcaiaScaleUserInfoKeyUnit]! as! NSNumber
+                            let weight = output.userInfo![AcaiaScaleUserInfoKeyWeight]! as! Float
+                            self.onWeight(unit: unit,newWeight: weight)
                     }
+                    Spacer()
                     if self.state == .brewing {
                         Button(action: {
                             if let scale = AcaiaManager.shared().connectedScale {
@@ -65,16 +66,21 @@ struct BrewView: View {
                                 self.state = .done
                             }
                         }){
-                            Text("Stop")
+                            Text("stop")
+                                .font(.body).bold()
+                                .lineLimit(1)
+                                //.minimumScaleFactor(0.5)
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.black)
                         }
                         .onReceive(timer) {_ in
                             self.onTime()
                         }
-                        // if timer is stopped from scale, stop in app
-                        .onReceive(scaleSentTime) {_ in
-                            self.lastScaleTime = self.lastTime
+                            // if timer is stopped from scale, stop in app
+                            .onReceive(scaleSentTime) {_ in
+                                self.lastScaleTime = self.lastTime
                         }
-                        .padding(40)
                     } else {
                         Button(action: {
                             if let scale = AcaiaManager.shared().connectedScale {
@@ -90,13 +96,25 @@ struct BrewView: View {
                             }
                         }){
                             if self.state == .done {
-                                Text("Restart")
+                                Text("restart")
+                                    .font(.body).bold()
+                                    .lineLimit(1)
+                                    //.minimumScaleFactor(0.5)
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
                             } else {
-                                Text("Start")
+                                Text("start")
+                                    .font(.body).bold()
+                                    .lineLimit(1)
+                                    //.minimumScaleFactor(0.5)
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
                             }
                         }
-                        // if timer started from scale, start in app
-                        .onReceive(scaleSentTime) {_ in
+                            // if timer started from scale, start in app
+                            .onReceive(scaleSentTime) {_ in
                                 self.brewCoordinates = [0,0]
                                 self.coordinates = [ChartDataEntry(x:0,y:0)]
                                 self.lastTime = 0
@@ -105,34 +123,57 @@ struct BrewView: View {
                                 self.scaleInitiated = true
                                 self.state = .brewing
                         }
-                        .padding(40)
+                        //.padding(40)
                     }
+                    Spacer()
                 }
                 Spacer()
                 VStack {
+                    Spacer()
                     // round seconds
                     if scaleInitiated {
                         Text("\(Int(ceil(lastTime)))")
+                            .font(.title).bold()
                     } else {
                         Text("\(Int(floor(lastTime)))")
+                            .font(.title).bold()
                     }
-                    Text("seconds")
+                    Text("(s)")
+                        .font(.headline).bold()
+                    Spacer()
                     Button(action: {
                         if let scale = AcaiaManager.shared().connectedScale {
                             scale.tare()
                         }
                     }) {
-                        Text("Tare")
+                        Text("tare")
+                            .font(.body).bold()
+                            .lineLimit(1)
+                            //.minimumScaleFactor(0.5)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(self.state == .brewing ? Color.gray : Color.black)
                     }.disabled(self.state == .brewing)
-                    .padding(40)
+                    //.padding(40)
+                    Spacer()
                 }
                 Spacer()
             }
             .padding([.top, .leading, .trailing], 40)
             Spacer()
+            if state == .done {
+                NavigationLink(destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates),isActive: self.$showInfoPage){
+                    EmptyView()
+                }
+                .isDetailLink(false)
+            }
         }
         .navigationBarTitle(Text("Brew"))
-        .navigationBarItems(trailing: state == .done ? NavigationLink("Next",destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates)).isDetailLink(false) : nil)
+        .navigationBarItems(trailing: state == .done ? Button(action: {
+            self.showInfoPage = true
+        }) {
+            Text("Done").font(.body)
+            } : nil)
     }
     
     //MARK: Helper Funcs
@@ -166,7 +207,7 @@ struct BrewView: View {
         self.timer = Timer.publish (every: 0.25, on: .main, in: .common)
         return
     }
-
+    
     func cancelTimer() {
         self.timer.connect().cancel()
         return

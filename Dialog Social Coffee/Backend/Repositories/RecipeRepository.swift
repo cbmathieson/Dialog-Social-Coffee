@@ -17,7 +17,7 @@ class BaseRecipeRepository {
 
 protocol RecipeRepository: BaseRecipeRepository {
     func addRecipe(_ recipe: Recipe)
-    func removeRecipe(_ recipe: Recipe)
+    func removeRecipe(_ recipeId: String)
     func updateRecipe(_ recipe: Recipe)
 }
 
@@ -33,8 +33,8 @@ class LocalRecipeRepository: BaseRecipeRepository, RecipeRepository, ObservableO
         saveData()
     }
     
-    func removeRecipe(_ recipe: Recipe) {
-        if let index = recipes.firstIndex(where: { $0.id == recipe.id }) {
+    func removeRecipe(_ recipeId: String) {
+        if let index = recipes.firstIndex(where: { $0.id == recipeId }) {
             recipes.remove(at: index)
             saveData()
         }

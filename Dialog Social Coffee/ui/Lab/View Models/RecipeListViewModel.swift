@@ -35,8 +35,9 @@ class RecipeListViewModel: ObservableObject { // (1)
         .store(in: &cancellables)
     }
     
-    func removeRecipe(recipe: Recipe) {
-        recipeRepository.removeRecipe(recipe)
+    func removeRecipe(recipeId: String) {
+        //print("recipe: \(recipe.title) deleted")
+        recipeRepository.removeRecipe(recipeId)
     }
     
     /*func removeRecipes(atOffsets indexSet: IndexSet) { // (4)

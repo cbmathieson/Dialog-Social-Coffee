@@ -39,7 +39,7 @@ struct RecipeDetailView: View {
             .padding()
             VStack {
                 HStack {
-                Text("\(String(format: "%.0f",recipeDetailVM.recipe.time))s").font(.body).bold()
+                    Text("\(String(format: "%.0f",recipeDetailVM.recipe.time))s").font(.body).bold()
                     Spacer()
                 }
                 Spacer(minLength: 10)
@@ -50,7 +50,7 @@ struct RecipeDetailView: View {
                 }
             }
             .padding()
-            LineChartDetail(coordinates: self.$coordinates,templateCoordinates: recipeDetailVM.recipe.coordinates)
+            LineChartDetail(coordinates: recipeDetailVM.recipe.coordinates)
                 //use frame to change the graph size within your SwiftUI view
                 .frame(width: 300, height: 300)
                 .padding()
@@ -59,14 +59,18 @@ struct RecipeDetailView: View {
                     print("Already connected to \(String(describing: scale.name))")
                     self.useBrewPagePresented = true
                 } else {
-                    self.partialSheet.showPartialSheet({
-                    }) {
-                        ScaleConnectionPartialView(didConnect: self.$useBrewPagePresented)
-                    }
+                    withAnimation {
+                        self.partialSheet.showPartialSheet({
+                        }) {
+                            ScaleConnectionPartialView(didConnect: self.$useBrewPagePresented)
+                        }
+                   }
                 }
             }) {
                 Text("use recipe")
                     .font(.body).bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                     .padding()
                     .foregroundColor(.white)
                     .background(Color.black)
