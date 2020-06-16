@@ -28,6 +28,9 @@ struct LineChartSwiftUI: UIViewRepresentable {
         set.lineWidth = 4
         set.drawCirclesEnabled = false
         set.setColor(.black)
+        set.mode = .cubicBezier
+        set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
+        set.drawFilledEnabled = true
         
         let dataSets = [set,getTemplateSet(),createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
@@ -97,6 +100,10 @@ struct LineChartSwiftUI: UIViewRepresentable {
         set.lineWidth = 4
         set.drawCirclesEnabled = false
         set.setColor(.black)
+        set.mode = .cubicBezier
+        set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
+        set.drawFilledEnabled = true
+        
         return set
     }
     
@@ -121,6 +128,19 @@ struct LineChartSwiftUI: UIViewRepresentable {
         setBoundary.drawCirclesEnabled = false
         
         return setBoundary
+    }
+    
+    // Get Gradient for Chart
+    func getGradient() -> CGGradient {
+        
+        let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 0.0).cgColor
+
+        let gradientColors = [colorTop, colorBottom] as CFArray
+        let colorLocations:[CGFloat] = [1.0, 0.0]
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)
+        
+        return gradient!
     }
     
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {

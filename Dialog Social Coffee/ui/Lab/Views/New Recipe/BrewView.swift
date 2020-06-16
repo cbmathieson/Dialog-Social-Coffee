@@ -40,7 +40,7 @@ struct BrewView: View {
             //MARK: LineChart
             LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: [])
                 .frame(width: 300, height: 300)
-                .padding()
+                .padding(.top)
             //MARK: Info Stack
             HStack(alignment: .center) {
                 Spacer()
