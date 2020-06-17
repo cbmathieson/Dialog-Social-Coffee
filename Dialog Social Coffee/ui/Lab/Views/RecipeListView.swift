@@ -108,7 +108,7 @@ struct RecipeListView: View {
                         }
                     }
                 }) { // (6)
-                    Text("+").foregroundColor(.black)
+                    Text("+").font(.largeTitle).foregroundColor(.black)
             })
         }
         .navigationViewStyle(StackNavigationViewStyle())

@@ -14,6 +14,7 @@ import PartialSheet
 struct RecipeDetailView: View {
     @ObservedObject var recipeDetailVM: RecipeDetailViewModel
     @EnvironmentObject var partialSheet: PartialSheetManager
+    
     @State var coordinates:[ChartDataEntry] = []
     
     @State var useBrewPagePresented:Bool = false
