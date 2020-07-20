@@ -93,6 +93,10 @@ struct RecipeListView: View {
                     }
                 }
             }
+            .onAppear {
+                // Current workaround since onDisappear does not work with navigation in BrewView
+                UIApplication.shared.isIdleTimerDisabled = false
+            }
             .navigationBarTitle("Lab")
             .navigationBarItems(trailing:
                 Button(action: {

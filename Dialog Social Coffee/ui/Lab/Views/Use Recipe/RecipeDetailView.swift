@@ -18,7 +18,6 @@ struct RecipeDetailView: View {
     @State var coordinates:[ChartDataEntry] = []
     
     @State var useBrewPagePresented:Bool = false
-    @State var partialSheetPresented:Bool = false
     
     var body: some View {
         VStack {
@@ -78,6 +77,10 @@ struct RecipeDetailView: View {
             }
             .padding()
             Spacer()
+        }
+        .onAppear {
+            // Current workaround since onDisappear does not work with navigation in BrewView
+            UIApplication.shared.isIdleTimerDisabled = false
         }
         .foregroundColor(.black)
         .navigationBarTitle("\(recipeDetailVM.recipe.title)")

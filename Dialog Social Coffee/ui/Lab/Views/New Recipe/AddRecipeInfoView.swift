@@ -52,5 +52,9 @@ struct AddRecipeInfoView: View {
                 }
             }
         }
+        .onAppear {
+            // Current workaround since onDisappear does not work with navigation in BrewView
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
     }
 }
