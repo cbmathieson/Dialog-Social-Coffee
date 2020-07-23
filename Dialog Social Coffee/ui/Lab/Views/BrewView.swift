@@ -127,13 +127,10 @@ struct BrewView: View {
                         }
                         .disabled(!self.isConnected)
                         // if timer started from scale, start in app
-                        .onReceive(scaleSentTime) { output in
-                            print("received timer update")
-                            guard let scaleTime = output.userInfo![AcaiaScaleTimer] as? NSNumber else {
-                                return
-                            }
-                            print(scaleTime)
-                            if Double(truncating: scaleTime) <= 1.0 {
+                        .onReceive(scaleSentTime) { (output) in
+                            guard let scaleTime = output.userInfo?[AcaiaScaleUserInfoKeyTimer] as? Int else { return }
+                            print("scale time: \(scaleTime) | internal time: \(self.lastTime)")
+                            if scaleTime <= 1 && (self.lastTime != 0.75 || self.lastTime != 1.0) {
                                 self.brewCoordinates = [0,0]
                                 self.coordinates = [ChartDataEntry(x:0,y:0)]
                                 self.lastTime = 0
@@ -143,7 +140,6 @@ struct BrewView: View {
                                 self.state = .brewing
                             }
                         }
-                        //.padding(40)
                     }
                     Spacer()
                 }
@@ -182,7 +178,9 @@ struct BrewView: View {
             }
             //.padding([.top, .leading, .trailing], 40)
             if self.isConnected {
-                Spacer()
+                Text("Reconnect to Scale")
+                    .padding(.bottom)
+                    .hidden()
             } else {
                 Button(action: {
                     if let scale = AcaiaManager.shared().connectedScale {
@@ -253,6 +251,18 @@ struct BrewView: View {
                 if i + 8 > coordinates.count-1 {
                     return
                 } else {
+                    
+                    // if there was a period before this point that was flat,
+                    // crop that too since the scale was likely pressed
+                    for j in stride(from: i-4, through: 0, by: -1) {
+                        if coordinates[i-4].y - coordinates[j].y > 0.2 {
+                            coordinates = Array(coordinates[0...j+4])
+                            // update seconds label to show new value
+                            lastTime = coordinates[j+4].x
+                            return
+                        }
+                    }
+                    
                     coordinates = Array(coordinates[0...i+4])
                     // update seconds label to show new value
                     lastTime = coordinates[i+4].x
@@ -298,10 +308,8 @@ struct BrewView: View {
     // add to BrewCoordinates
     private func onTime() {
         
-        print("scale: \(self.lastScaleTime) | internal: \(self.lastTime)")
-        
         // if scale was stopped externally, end capture
-        if self.lastTime > self.lastScaleTime + 0.50 && self.lastTime > 1 {
+        if self.lastTime > self.lastScaleTime + 0.5 && self.lastTime > 1 {
             self.cropData()
             self.state = .done
             return
@@ -309,7 +317,7 @@ struct BrewView: View {
         
         // if new val is lower, use old val
         // or new value is way higher than rate of flow for espresso: ignore it
-        if self.brewCoordinates[self.brewCoordinates.count-1] > self.lastWeight ||  self.lastWeight - self.brewCoordinates[self.brewCoordinates.count - 1] > 5 {
+        if self.brewCoordinates[self.brewCoordinates.count-1] > self.lastWeight ||  self.lastWeight - self.brewCoordinates[self.brewCoordinates.count - 1] > 2 {
             self.brewCoordinates.append(self.brewCoordinates[self.brewCoordinates.count-1])
         } else {
             self.brewCoordinates.append(self.lastWeight)
