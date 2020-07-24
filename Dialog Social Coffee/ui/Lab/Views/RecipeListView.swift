@@ -41,6 +41,9 @@ struct RecipeListView: View {
     
     var body: some View {
         NavigationView {
+            Color.backgroundColor
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
             VStack {
                 /*
                  Current SwiftUI bug for popping to root from navbaritem. Will clean up
@@ -51,7 +54,8 @@ struct RecipeListView: View {
                 }
                 .isDetailLink(false)
                 
-                QGrid(recipeListVM.recipeCellViewModels, columns: 2,hPadding: 20) { recipeCellVM in
+                
+                QGrid(recipeListVM.recipeCellViewModels, columns: 2,hSpacing: 20) { recipeCellVM in
                     VStack {
                         
                         /*
@@ -73,10 +77,8 @@ struct RecipeListView: View {
                             if recipeCellVM.recipe.id == self.selectedRecipeId && self.recipeActionSheetVisible {
                                 RecipeCell(recipeCellVM: recipeCellVM)
                                     .border(Color.black, width: 4)
-                                    .foregroundColor(.black)
                             } else {
                                 RecipeCell(recipeCellVM: recipeCellVM)
-                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -91,8 +93,9 @@ struct RecipeListView: View {
                                 }),
                                 .cancel()])
                     }
-                }
-            }
+                }.edgesIgnoringSafeArea(.bottom)
+                .NeumorphicViewStyle()
+            })
             .onAppear {
                 // Current workaround since onDisappear does not work with navigation in BrewView
                 UIApplication.shared.isIdleTimerDisabled = false
@@ -112,11 +115,13 @@ struct RecipeListView: View {
                         }
                     }
                 }) { // (6)
-                    Text("+").font(.largeTitle).foregroundColor(.black)
+                    Text("+").font(.largeTitle)
             })
         }
+            .foregroundColor(.textOnBackground)
         .navigationViewStyle(StackNavigationViewStyle())
         .addPartialSheet()
+        .accentColor(.textOnBackground)
     }
 }
 

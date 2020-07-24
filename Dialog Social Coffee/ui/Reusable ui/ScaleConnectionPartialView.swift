@@ -13,16 +13,19 @@ import PartialSheet
 struct ScaleConnectionPartialView: View {
     
     @Binding var didConnect:Bool
+    @Environment(\.colorScheme) var colorScheme
+    
     
     var body: some View {
         VStack(alignment: .center) {
             Text("Connect to Scale").font(.title).padding()
-            Image("acaia_scale")
+            Image(colorScheme == .dark ? "acaia-silver" : "acaia_scale")
                 .resizable()
                 .frame(width: 100,height:100)
                 //.padding(.bottom)
             AcaiaConnectionStatus(didConnect: $didConnect).padding(.bottom)
         }
+        .foregroundColor(.textOnBackground)
     }
 }
 
@@ -76,12 +79,8 @@ struct AcaiaConnectionStatus: View {
                             self.startConnectTimer()
                         }
                     }) {
-                        Text("pair")
-                        .font(.body).bold()
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.black)
-                    }
+                        Text("Pair")
+                    }.buttonStyle(NeumorphicButtonStyle())
             } else if state == .loaded {
                 Text("\(prompt)").font(.body).minimumScaleFactor(0.5).padding().multilineTextAlignment(.center)
                 Button(action: {
@@ -91,14 +90,8 @@ struct AcaiaConnectionStatus: View {
                     self.shouldAnimate = true
                     AcaiaManager.shared().startScan(2.5)
                 }) {
-                    Text("search")
-                    .font(.body).bold()
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.black)
-                }
+                    Text("Search")
+                }.buttonStyle(NeumorphicButtonStyle())
             } else if state == .connected {
                 Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
                 Text("")

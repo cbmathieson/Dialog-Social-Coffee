@@ -39,11 +39,15 @@ struct BrewView: View {
     let didDisconnect = NotificationCenter.default.publisher(for: Notification.Name(rawValue: AcaiaScaleDidDisconnected))
     
     var body: some View {
+        Color.backgroundColor
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
         VStack {
             //MARK: LineChart
             LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
-                .frame(width: 300, height: 300)
+                .frame(width: 280, height: 300)
                 .padding(.top)
+                .NeumorphicViewStyle()
             //MARK: Info Stack
             HStack(alignment: .center) {
                 Spacer()
@@ -74,13 +78,9 @@ struct BrewView: View {
                             }
                         }){
                             Text("stop")
-                                .font(.body).bold()
-                                .lineLimit(1)
-                                //.minimumScaleFactor(0.5)
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(!self.isConnected ? Color.gray : Color.black)
+                                //.background(!self.isConnected ? Color.gray : Color.black)
                         }
+                        .buttonStyle(NeumorphicButtonStyle())
                         .disabled(!self.isConnected)
                         .onReceive(timer) {_ in
                             self.onTime()
@@ -109,22 +109,13 @@ struct BrewView: View {
                         }){
                             if self.state == .done {
                                 Text("restart")
-                                    .font(.body).bold()
-                                    .lineLimit(1)
-                                    //.minimumScaleFactor(0.5)
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(!self.isConnected ? Color.gray : Color.black)
+                                    //.background(!self.isConnected ? Color.gray : Color.black)
                             } else {
                                 Text("start")
-                                    .font(.body).bold()
-                                    .lineLimit(1)
-                                    //.minimumScaleFactor(0.5)
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(!self.isConnected ? Color.gray : Color.black)
+                                    //.background(!self.isConnected ? Color.gray : Color.black)
                             }
                         }
+                        .buttonStyle(NeumorphicButtonStyle())
                         .disabled(!self.isConnected)
                         // if timer started from scale, start in app
                         .onReceive(scaleSentTime) { (output) in
@@ -164,13 +155,9 @@ struct BrewView: View {
                         }
                     }) {
                         Text("tare")
-                            .font(.body).bold()
-                            .lineLimit(1)
-                            //.minimumScaleFactor(0.5)
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(self.state  == .brewing || !self.isConnected ? Color.gray : Color.black)
-                    }.disabled(self.state == .brewing || !self.isConnected)
+                    }
+                    .buttonStyle(NeumorphicButtonStyle())
+                    .disabled(self.state == .brewing || !self.isConnected)
                     //.padding(40)
                     Spacer()
                 }
@@ -196,6 +183,7 @@ struct BrewView: View {
                     }
                 }) {
                     Text("Reconnect to Scale")
+                        .buttonStyle(NeumorphicButtonStyle())
                 }
                 .padding(.bottom)
             }
@@ -205,7 +193,7 @@ struct BrewView: View {
                 }
                 .isDetailLink(false)
             }
-        }
+        })
         .onReceive(didDisconnect) {_ in
             self.isConnected = false
         }
