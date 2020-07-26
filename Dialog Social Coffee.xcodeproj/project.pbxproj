@@ -25,11 +25,16 @@
 		212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59042472F98A009873AE /* AppDelegate+Resolving.swift */; };
 		216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */; };
 		216BEAC32473583800A05CFF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC22473583800A05CFF /* CameraView.swift */; };
+		2191157424CD5F1F00A8D897 /* SoftButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157324CD5F1F00A8D897 /* SoftButtonStyle.swift */; };
+		2191157624CD5F5100A8D897 /* SoftInnerShadowViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157524CD5F5100A8D897 /* SoftInnerShadowViewModifier.swift */; };
+		2191157824CD5F8700A8D897 /* SoftOuterShadowViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157724CD5F8700A8D897 /* SoftOuterShadowViewModifier.swift */; };
+		2191157A24CD5FA600A8D897 /* View+InverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157924CD5FA600A8D897 /* View+InverseMask.swift */; };
+		2191157C24CD5FF500A8D897 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157B24CD5FF500A8D897 /* Color+Hex.swift */; };
+		2191157E24CD601300A8D897 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191157D24CD601300A8D897 /* Neumorphic.swift */; };
 		21BA34B72479F7C80080BCB2 /* AddRecipeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */; };
 		21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */; };
 		21BFF58024CA38BB0062E012 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFF57F24CA38BB0062E012 /* Colors.swift */; };
 		21BFF58224CA400D0062E012 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFF58124CA400D0062E012 /* View.swift */; };
-		21BFF58524CA46DD0062E012 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 21BFF58424CA46DD0062E012 /* Neumorphic */; };
 		21BFF58724CA5C2A0062E012 /* testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFF58624CA5C2A0062E012 /* testing.swift */; };
 		21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 21E15A8924959AB800AF3E19 /* QGrid */; };
 		21E15A8D2496925E00AF3E19 /* LineChartPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E15A8C2496925E00AF3E19 /* LineChartPreview.swift */; };
@@ -63,7 +68,12 @@
 		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		2191157124CD5D3400A8D897 /* Neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Neumorphic; path = "Dialog Social Coffee/Neumorphic"; sourceTree = "<group>"; };
+		2191157324CD5F1F00A8D897 /* SoftButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtonStyle.swift; sourceTree = "<group>"; };
+		2191157524CD5F5100A8D897 /* SoftInnerShadowViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftInnerShadowViewModifier.swift; sourceTree = "<group>"; };
+		2191157724CD5F8700A8D897 /* SoftOuterShadowViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftOuterShadowViewModifier.swift; sourceTree = "<group>"; };
+		2191157924CD5FA600A8D897 /* View+InverseMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+InverseMask.swift"; sourceTree = "<group>"; };
+		2191157B24CD5FF500A8D897 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		2191157D24CD601300A8D897 /* Neumorphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
 		21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoViewModel.swift; sourceTree = "<group>"; };
 		21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		21BFF57F24CA38BB0062E012 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -84,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21BFF58524CA46DD0062E012 /* Neumorphic in Frameworks */,
 				21E15A922496ED5C00AF3E19 /* PartialSheet in Frameworks */,
 				21F54B9824CA83C700D0FE2A /* PopupView in Frameworks */,
 				21E15A8A24959AB800AF3E19 /* QGrid in Frameworks */,
@@ -98,7 +107,6 @@
 		212F58C22470C1AA009873AE = {
 			isa = PBXGroup;
 			children = (
-				2191157124CD5D3400A8D897 /* Neumorphic */,
 				212F58CD2470C1AA009873AE /* Dialog Social Coffee */,
 				212F58CC2470C1AA009873AE /* Products */,
 				E525851B799262C9E22A4C49 /* Pods */,
@@ -117,6 +125,7 @@
 		212F58CD2470C1AA009873AE /* Dialog Social Coffee */ = {
 			isa = PBXGroup;
 			children = (
+				2191157224CD5F0500A8D897 /* Neumorphic */,
 				21BFF57E24CA33F80062E012 /* Extensions */,
 				21BA34BF248096EF0080BCB2 /* App */,
 				21BA34BE24808AC60080BCB2 /* Backend */,
@@ -164,6 +173,19 @@
 				21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */,
 			);
 			path = "Reusable ui";
+			sourceTree = "<group>";
+		};
+		2191157224CD5F0500A8D897 /* Neumorphic */ = {
+			isa = PBXGroup;
+			children = (
+				2191157324CD5F1F00A8D897 /* SoftButtonStyle.swift */,
+				2191157D24CD601300A8D897 /* Neumorphic.swift */,
+				2191157524CD5F5100A8D897 /* SoftInnerShadowViewModifier.swift */,
+				2191157724CD5F8700A8D897 /* SoftOuterShadowViewModifier.swift */,
+				2191157924CD5FA600A8D897 /* View+InverseMask.swift */,
+				2191157B24CD5FF500A8D897 /* Color+Hex.swift */,
+			);
+			path = Neumorphic;
 			sourceTree = "<group>";
 		};
 		21BA34BE24808AC60080BCB2 /* Backend */ = {
@@ -396,7 +418,6 @@
 			packageProductDependencies = (
 				21E15A8924959AB800AF3E19 /* QGrid */,
 				21E15A912496ED5C00AF3E19 /* PartialSheet */,
-				21BFF58424CA46DD0062E012 /* Neumorphic */,
 				21F54B9724CA83C700D0FE2A /* PopupView */,
 			);
 			productName = "Dialog Social Coffee";
@@ -430,7 +451,6 @@
 			packageReferences = (
 				21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */,
 				21E15A902496ED5C00AF3E19 /* XCRemoteSwiftPackageReference "PartialSheet" */,
-				21BFF58324CA46DD0062E012 /* XCRemoteSwiftPackageReference "neumorphic" */,
 				21F54B9624CA83C700D0FE2A /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 212F58CC2470C1AA009873AE /* Products */;
@@ -507,9 +527,15 @@
 				21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */,
 				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
 				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
+				2191157C24CD5FF500A8D897 /* Color+Hex.swift in Sources */,
+				2191157E24CD601300A8D897 /* Neumorphic.swift in Sources */,
+				2191157824CD5F8700A8D897 /* SoftOuterShadowViewModifier.swift in Sources */,
 				21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */,
 				212F58FD2472219C009873AE /* BrewView.swift in Sources */,
+				2191157624CD5F5100A8D897 /* SoftInnerShadowViewModifier.swift in Sources */,
+				2191157424CD5F1F00A8D897 /* SoftButtonStyle.swift in Sources */,
 				212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */,
+				2191157A24CD5FA600A8D897 /* View+InverseMask.swift in Sources */,
 				212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */,
 				21BFF58224CA400D0062E012 /* View.swift in Sources */,
 				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
@@ -728,14 +754,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		21BFF58324CA46DD0062E012 /* XCRemoteSwiftPackageReference "neumorphic" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/costachung/neumorphic/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Q-Mobile/QGrid";
@@ -763,11 +781,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21BFF58424CA46DD0062E012 /* Neumorphic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21BFF58324CA46DD0062E012 /* XCRemoteSwiftPackageReference "neumorphic" */;
-			productName = Neumorphic;
-		};
 		21E15A8924959AB800AF3E19 /* QGrid */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21E15A8824959AB800AF3E19 /* XCRemoteSwiftPackageReference "QGrid" */;

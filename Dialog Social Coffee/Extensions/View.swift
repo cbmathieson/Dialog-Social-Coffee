@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftUI
-import Neumorphic
 
 extension View {
     
@@ -30,7 +29,6 @@ struct MainChart: ViewModifier {
         content
             .padding(5)
             .cornerRadius(20)
-            .softOuterShadow()
             .background(Neumorphic.shared.mainColor())
     }
     

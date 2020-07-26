@@ -27,10 +27,10 @@ struct LineChartSwiftUI: UIViewRepresentable {
         // edit set styling
         set.lineWidth = 4
         set.drawCirclesEnabled = false
-        set.setColor(.black)
+        set.setColor(UIColor.highlightColor)
         set.mode = .horizontalBezier
-        set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
-        set.drawFilledEnabled = true
+        //set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
+        //set.drawFilledEnabled = true
         
         let dataSets = [getTemplateSet(),set,createSetBoundary()]
         let data = LineChartData(dataSets: dataSets)
@@ -58,7 +58,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         //set y axis stuff
         lineChart.rightAxis.enabled = false
         let YAxis = lineChart.leftAxis
-        YAxis.labelTextColor = .black
+        YAxis.labelTextColor = UIColor.textOnBackground
         YAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
         YAxis.drawAxisLineEnabled = false
         
@@ -71,11 +71,11 @@ struct LineChartSwiftUI: UIViewRepresentable {
         lineChart.xAxis.gridColor = .clear
         lineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
         lineChart.xAxis.setLabelCount(5, force: false)
-        lineChart.xAxis.labelTextColor = .black
+        lineChart.xAxis.labelTextColor = UIColor.textOnBackground
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
-        lineChart.backgroundColor = .white
+        lineChart.backgroundColor = UIColor.backgroundColor
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false
     }
@@ -87,7 +87,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         // edit template set styling
         templateSet.lineWidth = 4
         templateSet.drawCirclesEnabled = false
-        templateSet.setColor(.lightGray)
+        templateSet.setColor(UIColor.darkShadow)
         templateSet.mode = .horizontalBezier
         
         return templateSet
@@ -100,10 +100,10 @@ struct LineChartSwiftUI: UIViewRepresentable {
         // edit set styling
         set.lineWidth = 4
         set.drawCirclesEnabled = false
-        set.setColor(.black)
+        set.setColor(UIColor.highlightColor)
         set.mode = .horizontalBezier
-        set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
-        set.drawFilledEnabled = true
+        //set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
+        //set.drawFilledEnabled = true
         
         return set
     }

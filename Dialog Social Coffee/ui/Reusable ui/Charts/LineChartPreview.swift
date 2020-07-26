@@ -35,7 +35,7 @@ struct LineChartPreview: UIViewRepresentable {
         lineChart.rightAxis.enabled = false
         let YAxis = lineChart.leftAxis
         YAxis.drawLabelsEnabled = false
-        YAxis.labelTextColor = .black
+        YAxis.labelTextColor = UIColor.textOnBackground
         YAxis.drawAxisLineEnabled = false
         
         //set x axis stuff
@@ -47,7 +47,7 @@ struct LineChartPreview: UIViewRepresentable {
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
-        lineChart.backgroundColor = .white
+        lineChart.backgroundColor = UIColor.backgroundColor
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false
     }
@@ -59,10 +59,10 @@ struct LineChartPreview: UIViewRepresentable {
         // edit set styling
         set.lineWidth = 3
         set.drawCirclesEnabled = false
-        set.setColor(.black)
+        set.setColor(UIColor.highlightColor)
         set.mode = .horizontalBezier
-        set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
-        set.drawFilledEnabled = true
+        //set.fill = Fill.fillWithLinearGradient(getGradient(), angle: 90.0)
+        //set.drawFilledEnabled = true
         
         return set
     }

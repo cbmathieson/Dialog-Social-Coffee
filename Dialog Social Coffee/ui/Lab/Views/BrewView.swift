@@ -39,190 +39,222 @@ struct BrewView: View {
     let didDisconnect = NotificationCenter.default.publisher(for: Notification.Name(rawValue: AcaiaScaleDidDisconnected))
     
     var body: some View {
+        //NavigationView {
         Color.backgroundColor
             .edgesIgnoringSafeArea(.all)
             .overlay(
-        VStack {
-            //MARK: LineChart
-            LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
-                .frame(width: 280, height: 300)
-                .padding(.top)
-                .MainChartStyle()
-                .cornerRadius(25)
-                //NeumorphicViewStyle()
-            //MARK: Info Stack
-            HStack(alignment: .center) {
-                Spacer()
                 VStack {
                     Spacer()
-                    // round seconds
-                    if scaleInitiated {
-                        Text("\(Int(ceil(lastTime)))")
-                            .font(.title).bold()
-                    } else {
-                        Text("\(Int(floor(lastTime)))")
-                            .font(.title).bold()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.backgroundColor)
+                            .frame(width: 300, height: 320, alignment: .center)
+                            .softOuterShadow(darkShadow: Color.darkShadow, lightShadow: Color.lightShadow)
+                    LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
+                        .frame(width: 280, height: 300, alignment: .center)
                     }
-                    Text("(s)")
-                        .font(.headline).bold()
+                    .padding(.top)
                     Spacer()
-                    if self.state == .brewing {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Spacer()
+                            VStack {
+                                if scaleInitiated {
+                                    Text("\(Int(ceil(lastTime)))")
+                                        .font(.title).bold()
+                                } else {
+                                    Text("\(Int(floor(lastTime)))")
+                                        .font(.title).bold()
+                                }
+                                Text("s").font(.headline)
+                            }
+                            Spacer()
+                            if !self.isConnected {
+                                Button(action: {}){
+                                    ZStack {
+                                        Image(systemName: "stop.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30, height: 30)
+                                    }
+                                    .frame(width: 50, height: 50)
+                                }
+                                .softButtonStyle(Circle(), mainColor: Color.backgroundColor, textColor: Color.darkShadow,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow, isDepressed: true)
+                            } else if (self.state == .brewing) {
+                                Button(action: {
+                                        if let scale = AcaiaManager.shared().connectedScale {
+                                            scale.pauseTimer()
+                                            self.cancelTimer()
+                                            self.lastScaleTime = 0
+                                            self.cropData()
+                                            self.state = .done
+                                        } else {
+                                            self.isConnected = false
+                                        }}){
+                                    ZStack {
+                                        Image(systemName: "stop.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30, height: 30)
+                                    }
+                                    .frame(width: 50, height: 50)
+                                }
+                                .softButtonStyle(Circle(), mainColor: Color.backgroundColor, textColor: Color.highlightColor,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow, isDepressed: true)
+                                .onReceive(timer) {_ in
+                                    self.onTime()
+                                }
+                                // if timer is stopped from scale, stop in app
+                                .onReceive(scaleSentTime) {_ in
+                                    if self.state == .brewing {
+                                        self.lastScaleTime = self.lastTime
+                                    }
+                                }
+                            } else {
+                                Button(action: {if let scale = AcaiaManager.shared().connectedScale {
+                                    self.brewCoordinates = [0,0]
+                                    self.coordinates = [ChartDataEntry(x:0,y:0)]
+                                    self.lastTime = 0
+                                    scale.stopTimer()
+                                    scale.startTimer()
+                                    self.instantiateTimer()
+                                    print(self.timer.connect())
+                                    self.scaleInitiated = false
+                                    self.state = .brewing
+                                } else {
+                                    self.isConnected = false
+                                }}){
+                                    ZStack {
+                                        Image(systemName: "play.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30, height: 30)
+                                            .offset(x: 3)
+                                    }
+                                    .frame(width: 50, height: 50)
+                                }
+                                .softButtonStyle(Circle(), mainColor: Color.backgroundColor, textColor: Color.highlightColor,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow, isDepressed: false)
+                                // if timer started from scale, start in app
+                                .onReceive(scaleSentTime) { (output) in
+                                    guard let scaleTime = output.userInfo?[AcaiaScaleUserInfoKeyTimer] as? Int else { return }
+                                    print("scale time: \(scaleTime) | internal time: \(self.lastTime)")
+                                    if scaleTime <= 1 && (self.lastTime != 0.75 || self.lastTime != 1.0) {
+                                        self.brewCoordinates = [0,0]
+                                        self.coordinates = [ChartDataEntry(x:0,y:0)]
+                                        self.lastTime = 0
+                                        self.instantiateTimer()
+                                        print(self.timer.connect())
+                                        self.scaleInitiated = true
+                                        self.state = .brewing
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+                        Spacer()
+                        VStack {
+                            Spacer()
+                            VStack {
+                                Text(self.state == .loaded ? "\(String(format: "%.1f",lastWeight))" : "\(String(format: "%.1f",self.brewCoordinates[self.brewCoordinates.count-1]))").font(.title).bold()
+                                Text("g").font(.headline)
+                                    .onReceive(weightPub) { (output) in
+                                        let unit = output.userInfo![AcaiaScaleUserInfoKeyUnit]! as! NSNumber
+                                        let weight = output.userInfo![AcaiaScaleUserInfoKeyWeight]! as! Float
+                                        self.onWeight(unit: unit,newWeight: weight)
+                                    }
+                            }
+                            Spacer()
+                            if self.isConnected {
+                                Button(action: {if let scale = AcaiaManager.shared().connectedScale {
+                                    scale.tare()
+                                } else {
+                                    self.isConnected = false
+                                }}){
+                                    ZStack {
+                                        Text("T")
+                                            .font(.largeTitle).bold()
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(Color.textOnBackground)
+                                    }
+                                    .frame(width: 50, height: 50)
+                                }.softButtonStyle(Circle(), mainColor: Color.backgroundColor, textColor: Color.textOnHighlight,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow)
+                                .disabled(self.state == .brewing)
+                            } else {
+                                Button(action: {}){
+                                    ZStack {
+                                        Text("T")
+                                            .font(.largeTitle).bold()
+                                            .multilineTextAlignment(.center)
+                                            .foregroundColor(Color.darkShadow)
+                                    }
+                                    .frame(width: 50, height: 50)
+                                }.softButtonStyle(Circle(), mainColor: Color.backgroundColor, textColor: Color.darkShadow,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow, isDepressed: true)
+                            }
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                    if self.isConnected {
+                        Button(action: {}) {
+                            Text("Reconnect to Scale").bold()
+                        }
+                        .softButtonStyle(RoundedRectangle(cornerRadius: 20), mainColor: Color.backgroundColor, textColor: Color.highlightColor,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow)
+                        //.padding(.bottom)
+                        .hidden()
+                    } else {
                         Button(action: {
-                            print("User clicked stop")
                             if let scale = AcaiaManager.shared().connectedScale {
-                                scale.pauseTimer()
-                                self.cancelTimer()
-                                self.lastScaleTime = 0
-                                self.cropData()
-                                self.state = .done
+                                print("Already connected to \(String(describing: scale.name))")
+                                self.isConnected = true
                             } else {
-                                self.isConnected = false
+                                withAnimation {
+                                    self.partialSheet.showPartialSheet({
+                                    }) {
+                                        ScaleConnectionPartialView(didConnect: self.$isConnected)
+                                    }
+                                }
                             }
-                        }){
-                            Text("stop")
-                                //.background(!self.isConnected ? Color.gray : Color.black)
+                        }) {
+                            Text("Reconnect to Scale").bold()
                         }
-                        .buttonStyle(NeumorphicButtonStyle())
-                        .disabled(!self.isConnected)
-                        .onReceive(timer) {_ in
-                            self.onTime()
-                        }
-                        // if timer is stopped from scale, stop in app
-                        .onReceive(scaleSentTime) {_ in
-                            if self.state == .brewing {
-                                self.lastScaleTime = self.lastTime
-                            }
-                        }
-                    } else {
-                        Button(action: {
-                            if let scale = AcaiaManager.shared().connectedScale {
-                                self.brewCoordinates = [0,0]
-                                self.coordinates = [ChartDataEntry(x:0,y:0)]
-                                self.lastTime = 0
-                                scale.stopTimer()
-                                scale.startTimer()
-                                self.instantiateTimer()
-                                print(self.timer.connect())
-                                self.scaleInitiated = false
-                                self.state = .brewing
-                            } else {
-                                self.isConnected = false
-                            }
-                        }){
-                            if self.state == .done {
-                                Text("restart")
-                                    //.background(!self.isConnected ? Color.gray : Color.black)
-                            } else {
-                                Text("start")
-                                    //.background(!self.isConnected ? Color.gray : Color.black)
-                            }
-                        }
-                        .buttonStyle(NeumorphicButtonStyle())
-                        .disabled(!self.isConnected)
-                        // if timer started from scale, start in app
-                        .onReceive(scaleSentTime) { (output) in
-                            guard let scaleTime = output.userInfo?[AcaiaScaleUserInfoKeyTimer] as? Int else { return }
-                            print("scale time: \(scaleTime) | internal time: \(self.lastTime)")
-                            if scaleTime <= 1 && (self.lastTime != 0.75 || self.lastTime != 1.0) {
-                                self.brewCoordinates = [0,0]
-                                self.coordinates = [ChartDataEntry(x:0,y:0)]
-                                self.lastTime = 0
-                                self.instantiateTimer()
-                                print(self.timer.connect())
-                                self.scaleInitiated = true
-                                self.state = .brewing
-                            }
-                        }
+                        .softButtonStyle(RoundedRectangle(cornerRadius: 20), mainColor: Color.backgroundColor, textColor: Color.highlightColor,darkShadowColor: Color.darkShadow,lightShadowColor: Color.lightShadow)
+                        //.padding(.bottom)
                     }
-                    Spacer()
-                }
-                Spacer()
-                VStack {
-                    Spacer()
-                    Text(self.state == .loaded ? "\(String(format: "%.1f",lastWeight))" : "\(String(format: "%.1f",self.brewCoordinates[self.brewCoordinates.count-1]))")
-                        .font(.title).bold()
-                    Text("(g)")
-                        .font(.headline).bold()
-                        .onReceive(weightPub) { (output) in
-                            let unit = output.userInfo![AcaiaScaleUserInfoKeyUnit]! as! NSNumber
-                            let weight = output.userInfo![AcaiaScaleUserInfoKeyWeight]! as! Float
-                            self.onWeight(unit: unit,newWeight: weight)
+                    if state == .done {
+                        NavigationLink(destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates),isActive: self.$showInfoPage){
+                            EmptyView()
                         }
-                    Spacer()
-                    Button(action: {
-                        if let scale = AcaiaManager.shared().connectedScale {
-                            scale.tare()
-                        } else {
-                            self.isConnected = false
-                        }
-                    }) {
-                        Text("tare")
+                        .isDetailLink(false)
                     }
-                    .buttonStyle(NeumorphicButtonStyle())
-                    .disabled(self.state == .brewing || !self.isConnected)
-                    //.padding(40)
-                    Spacer()
-                }
-                Spacer()
+                })
+            .onReceive(didDisconnect) {_ in
+                self.isConnected = false
             }
-            //.padding([.top, .leading, .trailing], 40)
-            if self.isConnected {
-                Text("Reconnect to Scale")
-                    .padding(.bottom)
-                    .hidden()
-            } else {
-                Button(action: {
-                    if let scale = AcaiaManager.shared().connectedScale {
-                        print("Already connected to \(String(describing: scale.name))")
-                        self.isConnected = true
-                    } else {
-                        withAnimation {
-                            self.partialSheet.showPartialSheet({
-                            }) {
-                                ScaleConnectionPartialView(didConnect: self.$isConnected)
-                            }
-                        }
-                    }
-                }) {
-                    Text("Reconnect to Scale")
-                        .buttonStyle(NeumorphicButtonStyle())
-                }
-                .padding(.bottom)
-            }
-            if state == .done {
-                NavigationLink(destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates),isActive: self.$showInfoPage){
-                    EmptyView()
-                }
-                .isDetailLink(false)
-            }
-        })
-        .onReceive(didDisconnect) {_ in
-            self.isConnected = false
-        }
-        .onAppear {
-            // TODO: reset scale so hopefully we dont get that restarting problem
-            instantiateScale()
-            UIApplication.shared.isIdleTimerDisabled = true
-        }.onDisappear {
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
-        .navigationBarTitle(Text("Brew"))
-        .navigationBarItems(trailing: state == .done ? Button(action: {
-            // if presented from detail list (templateCoordinates == []) go to addinfo
-            // else go back
-            if self.templateCoordinates.count > 0 {
-                // Current workaround since onDisappear does not work with navigation
+            .onAppear {
+                // TODO: reset scale so hopefully we dont get that restarting problem
+                instantiateScale()
+                UIApplication.shared.isIdleTimerDisabled = true
+            }.onDisappear {
                 UIApplication.shared.isIdleTimerDisabled = false
-                self.isPresented = false
-            } else {
-                // Current workaround since onDisappear does not work with navigation
-                UIApplication.shared.isIdleTimerDisabled = false
-                self.showInfoPage = true
             }
-        }) {
-            Text("Done").font(.body)
-        } : nil)
+            .navigationBarTitle(Text("Brew"))
+            .navigationBarItems(trailing: state == .done ? Button(action: {
+                // if presented from detail list (templateCoordinates == []) go to addinfo
+                // else go back
+                if self.templateCoordinates.count > 0 {
+                    // Current workaround since onDisappear does not work with navigation
+                    UIApplication.shared.isIdleTimerDisabled = false
+                    self.isPresented = false
+                } else {
+                    // Current workaround since onDisappear does not work with navigation
+                    UIApplication.shared.isIdleTimerDisabled = false
+                    self.showInfoPage = true
+                }
+            }) {
+                Text("Done").font(.body)
+            } : nil)
     }
+    
     
     //MARK: Helper Funcs
     
@@ -338,3 +370,191 @@ struct BrewView_Previews: PreviewProvider {
         /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
+
+// Just in case:
+
+/*var body: some View {
+ Color.backgroundColor
+ .edgesIgnoringSafeArea(.all)
+ .overlay(
+ VStack {
+ //MARK: LineChart
+ LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
+ .frame(width: 280, height: 300)
+ .padding(.top)
+ .MainChartStyle()
+ .cornerRadius(20)
+ //NeumorphicViewStyle()
+ //MARK: Info Stack
+ HStack(alignment: .center) {
+ Spacer()
+ VStack {
+ Spacer()
+ // round seconds
+ if scaleInitiated {
+ Text("\(Int(ceil(lastTime)))")
+ .font(.title).bold()
+ } else {
+ Text("\(Int(floor(lastTime)))")
+ .font(.title).bold()
+ }
+ Text("(s)")
+ .font(.headline).bold()
+ Spacer()
+ if self.state == .brewing {
+ Button(action: {
+ print("User clicked stop")
+ if let scale = AcaiaManager.shared().connectedScale {
+ scale.pauseTimer()
+ self.cancelTimer()
+ self.lastScaleTime = 0
+ self.cropData()
+ self.state = .done
+ } else {
+ self.isConnected = false
+ }
+ }){
+ Text("stop")
+ //.background(!self.isConnected ? Color.gray : Color.black)
+ }
+ .buttonStyle(NeumorphicButtonStyle())
+ .disabled(!self.isConnected)
+ .onReceive(timer) {_ in
+ self.onTime()
+ }
+ // if timer is stopped from scale, stop in app
+ .onReceive(scaleSentTime) {_ in
+ if self.state == .brewing {
+ self.lastScaleTime = self.lastTime
+ }
+ }
+ } else {
+ Button(action: {
+ if let scale = AcaiaManager.shared().connectedScale {
+ self.brewCoordinates = [0,0]
+ self.coordinates = [ChartDataEntry(x:0,y:0)]
+ self.lastTime = 0
+ scale.stopTimer()
+ scale.startTimer()
+ self.instantiateTimer()
+ print(self.timer.connect())
+ self.scaleInitiated = false
+ self.state = .brewing
+ } else {
+ self.isConnected = false
+ }
+ }){
+ if self.state == .done {
+ Text("restart")
+ //.background(!self.isConnected ? Color.gray : Color.black)
+ } else {
+ Text("start")
+ //.background(!self.isConnected ? Color.gray : Color.black)
+ }
+ }
+ .buttonStyle(NeumorphicButtonStyle())
+ .disabled(!self.isConnected)
+ // if timer started from scale, start in app
+ .onReceive(scaleSentTime) { (output) in
+ guard let scaleTime = output.userInfo?[AcaiaScaleUserInfoKeyTimer] as? Int else { return }
+ print("scale time: \(scaleTime) | internal time: \(self.lastTime)")
+ if scaleTime <= 1 && (self.lastTime != 0.75 || self.lastTime != 1.0) {
+ self.brewCoordinates = [0,0]
+ self.coordinates = [ChartDataEntry(x:0,y:0)]
+ self.lastTime = 0
+ self.instantiateTimer()
+ print(self.timer.connect())
+ self.scaleInitiated = true
+ self.state = .brewing
+ }
+ }
+ }
+ Spacer()
+ }
+ Spacer()
+ VStack {
+ Spacer()
+ Text(self.state == .loaded ? "\(String(format: "%.1f",lastWeight))" : "\(String(format: "%.1f",self.brewCoordinates[self.brewCoordinates.count-1]))")
+ .font(.title).bold()
+ Text("(g)")
+ .font(.headline).bold()
+ .onReceive(weightPub) { (output) in
+ let unit = output.userInfo![AcaiaScaleUserInfoKeyUnit]! as! NSNumber
+ let weight = output.userInfo![AcaiaScaleUserInfoKeyWeight]! as! Float
+ self.onWeight(unit: unit,newWeight: weight)
+ }
+ Spacer()
+ Button(action: {
+ if let scale = AcaiaManager.shared().connectedScale {
+ scale.tare()
+ } else {
+ self.isConnected = false
+ }
+ }) {
+ Text("tare")
+ }
+ .buttonStyle(NeumorphicButtonStyle())
+ .disabled(self.state == .brewing || !self.isConnected)
+ //.padding(40)
+ Spacer()
+ }
+ Spacer()
+ }
+ //.padding([.top, .leading, .trailing], 40)
+ if self.isConnected {
+ Text("Reconnect to Scale")
+ .padding(.bottom)
+ .hidden()
+ } else {
+ Button(action: {
+ if let scale = AcaiaManager.shared().connectedScale {
+ print("Already connected to \(String(describing: scale.name))")
+ self.isConnected = true
+ } else {
+ withAnimation {
+ self.partialSheet.showPartialSheet({
+ }) {
+ ScaleConnectionPartialView(didConnect: self.$isConnected)
+ }
+ }
+ }
+ }) {
+ Text("Reconnect to Scale")
+ .buttonStyle(NeumorphicButtonStyle())
+ }
+ .padding(.bottom)
+ }
+ if state == .done {
+ NavigationLink(destination: AddRecipeInfoView(isPresented: self.$isPresented,coordinates: coordinates),isActive: self.$showInfoPage){
+ EmptyView()
+ }
+ .isDetailLink(false)
+ }
+ })
+ .onReceive(didDisconnect) {_ in
+ self.isConnected = false
+ }
+ .onAppear {
+ // TODO: reset scale so hopefully we dont get that restarting problem
+ instantiateScale()
+ UIApplication.shared.isIdleTimerDisabled = true
+ }.onDisappear {
+ UIApplication.shared.isIdleTimerDisabled = false
+ }
+ .navigationBarTitle(Text("Brew"))
+ .navigationBarItems(trailing: state == .done ? Button(action: {
+ // if presented from detail list (templateCoordinates == []) go to addinfo
+ // else go back
+ if self.templateCoordinates.count > 0 {
+ // Current workaround since onDisappear does not work with navigation
+ UIApplication.shared.isIdleTimerDisabled = false
+ self.isPresented = false
+ } else {
+ // Current workaround since onDisappear does not work with navigation
+ UIApplication.shared.isIdleTimerDisabled = false
+ self.showInfoPage = true
+ }
+ }) {
+ Text("Done").font(.body)
+ } : nil)
+ }*/

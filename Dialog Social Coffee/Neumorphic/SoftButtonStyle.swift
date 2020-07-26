@@ -14,13 +14,15 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
     var textColor : Color
     var darkShadowColor : Color
     var lightShadowColor : Color
+    var isDepressed : Bool
     
-    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color) {
+    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color, isDepressed: Bool) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
+        self.isDepressed = isDepressed
     }
     
     public func makeBody(configuration: Self.Configuration) -> some View {
@@ -28,16 +30,16 @@ public struct SoftDynamicButtonStyle<S: Shape> : ButtonStyle {
             configuration.label
                 .foregroundColor(textColor)
                 .padding()
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .scaleEffect(configuration.isPressed || isDepressed ? 0.97 : 1)
             .background(
                 ZStack {
                     shape.fill(mainColor)
                         .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
-                        .opacity(configuration.isPressed ? 1 : 0)
+                        .opacity(configuration.isPressed || isDepressed ? 1 : 0)
 
                     shape.fill(mainColor)
                         .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
-                        .opacity(configuration.isPressed ? 0 : 1)
+                        .opacity(configuration.isPressed || isDepressed ? 0 : 1)
                 }
             )
         }
@@ -54,30 +56,32 @@ public struct SoftButtonStyle<S: Shape> : ButtonStyle {
     var textColor : Color
     var darkShadowColor : Color
     var lightShadowColor : Color
+    var isDepressed : Bool
     
-    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color) {
+    public init(_ shape: S, mainColor : Color, textColor : Color, darkShadowColor: Color, lightShadowColor: Color, isDepressed: Bool) {
         self.shape = shape
         self.mainColor = mainColor
         self.textColor = textColor
         self.darkShadowColor = darkShadowColor
         self.lightShadowColor = lightShadowColor
+        self.isDepressed = isDepressed
     }
     
     public func makeBody(configuration: Self.Configuration) -> some View {
         ZStack {
                 shape.fill(mainColor)
                     .softInnerShadow(shape, darkShadow: darkShadowColor, lightShadow: lightShadowColor, spread: 0.15, radius: 3)
-                    .opacity(configuration.isPressed ? 1 : 0)
+                    .opacity(configuration.isPressed || isDepressed ? 1 : 0)
             
                 shape.fill(mainColor)
                     .softOuterShadow(darkShadow: darkShadowColor, lightShadow: lightShadowColor, offset: 6, radius: 3)
-                    .opacity(configuration.isPressed ? 0 : 1)
+                    .opacity(configuration.isPressed || isDepressed ? 0 : 1)
 
             configuration.label
                 .foregroundColor(textColor)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .scaleEffect(configuration.isPressed ? 0.97 : 1)
+                .scaleEffect(configuration.isPressed || isDepressed ? 0.97 : 1)
         }
     }
     
@@ -86,9 +90,10 @@ public struct SoftButtonStyle<S: Shape> : ButtonStyle {
 
 extension Button {
 
-    public func softButtonStyle<S : Shape>(_ content: S, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor()) -> some View {
-        self.buttonStyle(SoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor))
+    public func softButtonStyle<S : Shape>(_ content: S, mainColor : Color = Neumorphic.shared.mainColor(), textColor : Color = Neumorphic.shared.secondaryColor(), darkShadowColor: Color = Neumorphic.shared.darkShadowColor(), lightShadowColor: Color = Neumorphic.shared.lightShadowColor(), isDepressed: Bool = false) -> some View {
+        self.buttonStyle(SoftDynamicButtonStyle(content, mainColor: mainColor, textColor: textColor, darkShadowColor: darkShadowColor, lightShadowColor: lightShadowColor, isDepressed: isDepressed))
     }
 
     
 }
+
