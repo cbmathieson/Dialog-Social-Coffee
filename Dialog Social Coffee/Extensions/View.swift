@@ -16,6 +16,24 @@ extension View {
         return modifier(NeumorphicViewModifier())
     }
     
+    func MainChartStyle() -> some View {
+        self.modifier(MainChart())
+    }
+    
+}
+
+// View Modifiers
+
+struct MainChart: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(5)
+            .cornerRadius(20)
+            .softOuterShadow()
+            .background(Neumorphic.shared.mainColor())
+    }
+    
 }
 
 struct NeumorphicViewModifier: ViewModifier {
@@ -35,7 +53,7 @@ struct NeumorphicViewModifier: ViewModifier {
                         .fill(Color.elementColor)
                 }
             )
-            .foregroundColor(.textOnElement)
+            .foregroundColor(.textOnHighlight)
     }
 }
 

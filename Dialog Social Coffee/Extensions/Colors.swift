@@ -13,12 +13,12 @@ extension Color {
     
     // Main colors for app
     static let backgroundColor = Color("BackgroundColor")
-    static let accentColor = Color("AccentColor")
-    static let elementColor = Color("ElementColor")
+    static let highlightColor = Color("HighlightColor")
+    static let elementColor = Color("FlatElementColor")
     
     // Main colors for app text/icons
     static let textOnBackground = Color("TextOnBackground")
-    static let textOnElement = Color("TextOnElement")
+    static let textOnHighlight = Color("TextOnHighlight")
     
     // shadows
     static let lightShadow = Color("lightShadow")

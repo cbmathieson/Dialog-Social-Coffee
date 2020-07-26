@@ -63,6 +63,7 @@
 		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		219FC2DE24CD57C800EC3EAD /* Neumorphic */ = {isa = PBXFileReference; lastKnownFileType = text; name = Neumorphic; path = "Local Dependecies/Neumorphic"; sourceTree = SOURCE_ROOT; };
 		21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoViewModel.swift; sourceTree = "<group>"; };
 		21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		21BFF57F24CA38BB0062E012 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 				21BA34BF248096EF0080BCB2 /* App */,
 				21BA34BE24808AC60080BCB2 /* Backend */,
 				21BA34C02480970B0080BCB2 /* ui */,
+				219FC2DE24CD57C800EC3EAD /* Neumorphic */,
 				212F58D72470C1AE009873AE /* Assets.xcassets */,
 				212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */,
 				212F58DF2470C1AE009873AE /* Info.plist */,

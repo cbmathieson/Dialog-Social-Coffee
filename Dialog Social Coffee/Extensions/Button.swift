@@ -8,6 +8,15 @@
 
 import Foundation
 import SwiftUI
+import Neumorphic
+
+extension Button {
+    
+    func MainChartStyle() -> some View {
+        self.modifier(MainChart())
+    }
+    
+}
 
 // Button Modifiers
 struct NeumorphicButtonStyle: ButtonStyle {
@@ -28,7 +37,7 @@ struct NeumorphicButtonStyle: ButtonStyle {
                 }
         )
             .scaleEffect(configuration.isPressed ? 0.92: 1)
-            .foregroundColor(.textOnElement)
+            .foregroundColor(.textOnHighlight)
             .animation(.spring())
     }
 }

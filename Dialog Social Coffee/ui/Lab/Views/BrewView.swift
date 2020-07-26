@@ -47,7 +47,9 @@ struct BrewView: View {
             LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
                 .frame(width: 280, height: 300)
                 .padding(.top)
-                .NeumorphicViewStyle()
+                .MainChartStyle()
+                .cornerRadius(25)
+                //NeumorphicViewStyle()
             //MARK: Info Stack
             HStack(alignment: .center) {
                 Spacer()
@@ -329,4 +331,10 @@ struct BrewView: View {
 
 enum BrewState {
     case loaded,brewing,done
+}
+
+struct BrewView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
 }
