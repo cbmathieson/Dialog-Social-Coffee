@@ -25,28 +25,6 @@
 		212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F59042472F98A009873AE /* AppDelegate+Resolving.swift */; };
 		216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */; };
 		216BEAC32473583800A05CFF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BEAC22473583800A05CFF /* CameraView.swift */; };
-		2191155A24CD5A5600A8D897 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2191153524CD5A5500A8D897 /* Assets.xcassets */; };
-		2191155B24CD5A5600A8D897 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2191153724CD5A5500A8D897 /* Preview Assets.xcassets */; };
-		2191155C24CD5A5600A8D897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2191153824CD5A5500A8D897 /* LaunchScreen.storyboard */; };
-		2191155D24CD5A5600A8D897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191153A24CD5A5500A8D897 /* AppDelegate.swift */; };
-		2191155E24CD5A5600A8D897 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191153B24CD5A5500A8D897 /* ContentView.swift */; };
-		2191155F24CD5A5600A8D897 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2191153C24CD5A5500A8D897 /* Info.plist */; };
-		2191156024CD5A5600A8D897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191153D24CD5A5500A8D897 /* SceneDelegate.swift */; };
-		2191156124CD5A5600A8D897 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2191154124CD5A5500A8D897 /* LICENSE */; };
-		2191156224CD5A5600A8D897 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154324CD5A5500A8D897 /* LinuxMain.swift */; };
-		2191156324CD5A5600A8D897 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154524CD5A5500A8D897 /* XCTestManifests.swift */; };
-		2191156424CD5A5600A8D897 /* NeumorphicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154624CD5A5500A8D897 /* NeumorphicTests.swift */; };
-		2191156524CD5A5600A8D897 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2191154724CD5A5500A8D897 /* README.md */; };
-		2191156624CD5A5600A8D897 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2191154824CD5A5500A8D897 /* .gitignore */; };
-		2191156724CD5A5600A8D897 /* FUNDING.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2191154A24CD5A5500A8D897 /* FUNDING.yml */; };
-		2191156824CD5A5600A8D897 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154B24CD5A5500A8D897 /* Package.swift */; };
-		2191156924CD5A5600A8D897 /* SoftButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154E24CD5A5500A8D897 /* SoftButtonStyle.swift */; };
-		2191156A24CD5A5600A8D897 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191154F24CD5A5500A8D897 /* Color+Hex.swift */; };
-		2191156B24CD5A5600A8D897 /* SoftOuterShadowViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191155024CD5A5500A8D897 /* SoftOuterShadowViewModifier.swift */; };
-		2191156C24CD5A5600A8D897 /* SoftInnerShadowViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191155124CD5A5500A8D897 /* SoftInnerShadowViewModifier.swift */; };
-		2191156D24CD5A5600A8D897 /* Neumorphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191155224CD5A5500A8D897 /* Neumorphic.swift */; };
-		2191156E24CD5A5600A8D897 /* View+InverseMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2191155324CD5A5500A8D897 /* View+InverseMask.swift */; };
-		2191156F24CD5A5600A8D897 /* package.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 2191155624CD5A5500A8D897 /* package.xcworkspace */; };
 		21BA34B72479F7C80080BCB2 /* AddRecipeInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */; };
 		21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */; };
 		21BFF58024CA38BB0062E012 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFF57F24CA38BB0062E012 /* Colors.swift */; };
@@ -63,16 +41,6 @@
 		21F54B9824CA83C700D0FE2A /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 21F54B9724CA83C700D0FE2A /* PopupView */; };
 		35BC8A18B4D357FC8154F54B /* Pods_Dialog_Social_Coffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C352E0A05706F5718B32AC7 /* Pods_Dialog_Social_Coffee.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2191155824CD5A5500A8D897 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2191153E24CD5A5500A8D897 /* neumorphic-ios-example.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AA1C8438240CDD090082F452;
-			remoteInfo = "neumorphic-ios-example";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		212F58CB2470C1AA009873AE /* Dialog Social Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dialog Social Coffee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,29 +63,7 @@
 		212F59042472F98A009873AE /* AppDelegate+Resolving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Resolving.swift"; sourceTree = "<group>"; };
 		216BEAC0247342CF00A05CFF /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 		216BEAC22473583800A05CFF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		2191153524CD5A5500A8D897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2191153724CD5A5500A8D897 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2191153924CD5A5500A8D897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2191153A24CD5A5500A8D897 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2191153B24CD5A5500A8D897 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2191153C24CD5A5500A8D897 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2191153D24CD5A5500A8D897 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2191153E24CD5A5500A8D897 /* neumorphic-ios-example.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "neumorphic-ios-example.xcodeproj"; sourceTree = "<group>"; };
-		2191154124CD5A5500A8D897 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		2191154324CD5A5500A8D897 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
-		2191154524CD5A5500A8D897 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
-		2191154624CD5A5500A8D897 /* NeumorphicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeumorphicTests.swift; sourceTree = "<group>"; };
-		2191154724CD5A5500A8D897 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2191154824CD5A5500A8D897 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		2191154A24CD5A5500A8D897 /* FUNDING.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = FUNDING.yml; sourceTree = "<group>"; };
-		2191154B24CD5A5500A8D897 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		2191154E24CD5A5500A8D897 /* SoftButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftButtonStyle.swift; sourceTree = "<group>"; };
-		2191154F24CD5A5500A8D897 /* Color+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
-		2191155024CD5A5500A8D897 /* SoftOuterShadowViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftOuterShadowViewModifier.swift; sourceTree = "<group>"; };
-		2191155124CD5A5500A8D897 /* SoftInnerShadowViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftInnerShadowViewModifier.swift; sourceTree = "<group>"; };
-		2191155224CD5A5500A8D897 /* Neumorphic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neumorphic.swift; sourceTree = "<group>"; };
-		2191155324CD5A5500A8D897 /* View+InverseMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+InverseMask.swift"; sourceTree = "<group>"; };
-		2191155624CD5A5500A8D897 /* package.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = package.xcworkspace; sourceTree = "<group>"; };
+		2191157124CD5D3400A8D897 /* Neumorphic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Neumorphic; path = "Dialog Social Coffee/Neumorphic"; sourceTree = "<group>"; };
 		21BA34B62479F7C80080BCB2 /* AddRecipeInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInfoViewModel.swift; sourceTree = "<group>"; };
 		21BA34B8247B066A0080BCB2 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		21BFF57F24CA38BB0062E012 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -152,6 +98,7 @@
 		212F58C22470C1AA009873AE = {
 			isa = PBXGroup;
 			children = (
+				2191157124CD5D3400A8D897 /* Neumorphic */,
 				212F58CD2470C1AA009873AE /* Dialog Social Coffee */,
 				212F58CC2470C1AA009873AE /* Products */,
 				E525851B799262C9E22A4C49 /* Pods */,
@@ -174,7 +121,6 @@
 				21BA34BF248096EF0080BCB2 /* App */,
 				21BA34BE24808AC60080BCB2 /* Backend */,
 				21BA34C02480970B0080BCB2 /* ui */,
-				2191153124CD5A5500A8D897 /* Local Dependecies */,
 				212F58D72470C1AE009873AE /* Assets.xcassets */,
 				212F58DC2470C1AE009873AE /* LaunchScreen.storyboard */,
 				212F58DF2470C1AE009873AE /* Info.plist */,
@@ -218,132 +164,6 @@
 				21E15A9524972F4900AF3E19 /* ActivityIndicator.swift */,
 			);
 			path = "Reusable ui";
-			sourceTree = "<group>";
-		};
-		2191153124CD5A5500A8D897 /* Local Dependecies */ = {
-			isa = PBXGroup;
-			children = (
-				2191153224CD5A5500A8D897 /* Neumorphic */,
-			);
-			path = "Local Dependecies";
-			sourceTree = "<group>";
-		};
-		2191153224CD5A5500A8D897 /* Neumorphic */ = {
-			isa = PBXGroup;
-			children = (
-				2191153324CD5A5500A8D897 /* neumorphic-ios-example */,
-				2191154124CD5A5500A8D897 /* LICENSE */,
-				2191154224CD5A5500A8D897 /* Tests */,
-				2191154724CD5A5500A8D897 /* README.md */,
-				2191154824CD5A5500A8D897 /* .gitignore */,
-				2191154924CD5A5500A8D897 /* .github */,
-				2191154B24CD5A5500A8D897 /* Package.swift */,
-				2191154C24CD5A5500A8D897 /* Sources */,
-				2191155424CD5A5500A8D897 /* .swiftpm */,
-			);
-			path = Neumorphic;
-			sourceTree = "<group>";
-		};
-		2191153324CD5A5500A8D897 /* neumorphic-ios-example */ = {
-			isa = PBXGroup;
-			children = (
-				2191153424CD5A5500A8D897 /* neumorphic-ios-example */,
-				2191153E24CD5A5500A8D897 /* neumorphic-ios-example.xcodeproj */,
-			);
-			path = "neumorphic-ios-example";
-			sourceTree = "<group>";
-		};
-		2191153424CD5A5500A8D897 /* neumorphic-ios-example */ = {
-			isa = PBXGroup;
-			children = (
-				2191153524CD5A5500A8D897 /* Assets.xcassets */,
-				2191153624CD5A5500A8D897 /* Preview Content */,
-				2191153824CD5A5500A8D897 /* LaunchScreen.storyboard */,
-				2191153A24CD5A5500A8D897 /* AppDelegate.swift */,
-				2191153B24CD5A5500A8D897 /* ContentView.swift */,
-				2191153C24CD5A5500A8D897 /* Info.plist */,
-				2191153D24CD5A5500A8D897 /* SceneDelegate.swift */,
-			);
-			path = "neumorphic-ios-example";
-			sourceTree = "<group>";
-		};
-		2191153624CD5A5500A8D897 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2191153724CD5A5500A8D897 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2191153F24CD5A5500A8D897 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2191155924CD5A5500A8D897 /* neumorphic-ios-example.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2191154224CD5A5500A8D897 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				2191154324CD5A5500A8D897 /* LinuxMain.swift */,
-				2191154424CD5A5500A8D897 /* NeumorphicTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		2191154424CD5A5500A8D897 /* NeumorphicTests */ = {
-			isa = PBXGroup;
-			children = (
-				2191154524CD5A5500A8D897 /* XCTestManifests.swift */,
-				2191154624CD5A5500A8D897 /* NeumorphicTests.swift */,
-			);
-			path = NeumorphicTests;
-			sourceTree = "<group>";
-		};
-		2191154924CD5A5500A8D897 /* .github */ = {
-			isa = PBXGroup;
-			children = (
-				2191154A24CD5A5500A8D897 /* FUNDING.yml */,
-			);
-			path = .github;
-			sourceTree = "<group>";
-		};
-		2191154C24CD5A5500A8D897 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				2191154D24CD5A5500A8D897 /* Neumorphic */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		2191154D24CD5A5500A8D897 /* Neumorphic */ = {
-			isa = PBXGroup;
-			children = (
-				2191154E24CD5A5500A8D897 /* SoftButtonStyle.swift */,
-				2191154F24CD5A5500A8D897 /* Color+Hex.swift */,
-				2191155024CD5A5500A8D897 /* SoftOuterShadowViewModifier.swift */,
-				2191155124CD5A5500A8D897 /* SoftInnerShadowViewModifier.swift */,
-				2191155224CD5A5500A8D897 /* Neumorphic.swift */,
-				2191155324CD5A5500A8D897 /* View+InverseMask.swift */,
-			);
-			path = Neumorphic;
-			sourceTree = "<group>";
-		};
-		2191155424CD5A5500A8D897 /* .swiftpm */ = {
-			isa = PBXGroup;
-			children = (
-				2191155524CD5A5500A8D897 /* xcode */,
-			);
-			path = .swiftpm;
-			sourceTree = "<group>";
-		};
-		2191155524CD5A5500A8D897 /* xcode */ = {
-			isa = PBXGroup;
-			children = (
-				2191155624CD5A5500A8D897 /* package.xcworkspace */,
-			);
-			path = xcode;
 			sourceTree = "<group>";
 		};
 		21BA34BE24808AC60080BCB2 /* Backend */ = {
@@ -615,12 +435,6 @@
 			);
 			productRefGroup = 212F58CC2470C1AA009873AE /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2191153F24CD5A5500A8D897 /* Products */;
-					ProjectRef = 2191153E24CD5A5500A8D897 /* neumorphic-ios-example.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				212F58CA2470C1AA009873AE /* Dialog Social Coffee */,
@@ -628,33 +442,14 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		2191155924CD5A5500A8D897 /* neumorphic-ios-example.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "neumorphic-ios-example.app";
-			remoteRef = 2191155824CD5A5500A8D897 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		212F58C92470C1AA009873AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2191156624CD5A5600A8D897 /* .gitignore in Resources */,
 				212F58DE2470C1AE009873AE /* LaunchScreen.storyboard in Resources */,
 				212F58DB2470C1AE009873AE /* Preview Assets.xcassets in Resources */,
-				2191156F24CD5A5600A8D897 /* package.xcworkspace in Resources */,
-				2191156124CD5A5600A8D897 /* LICENSE in Resources */,
-				2191155B24CD5A5600A8D897 /* Preview Assets.xcassets in Resources */,
-				2191155C24CD5A5600A8D897 /* LaunchScreen.storyboard in Resources */,
-				2191156724CD5A5600A8D897 /* FUNDING.yml in Resources */,
-				2191155A24CD5A5600A8D897 /* Assets.xcassets in Resources */,
-				2191156524CD5A5600A8D897 /* README.md in Resources */,
 				212F58D82470C1AE009873AE /* Assets.xcassets in Resources */,
-				2191155F24CD5A5600A8D897 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,31 +507,18 @@
 				21BA34B9247B066A0080BCB2 /* RecipeDetailView.swift in Sources */,
 				212F58EE2470CD77009873AE /* RecipeListViewModel.swift in Sources */,
 				212F58F02470CF71009873AE /* RecipeCellViewModel.swift in Sources */,
-				2191156324CD5A5600A8D897 /* XCTestManifests.swift in Sources */,
-				2191156924CD5A5600A8D897 /* SoftButtonStyle.swift in Sources */,
 				21E15A94249704EE00AF3E19 /* ScaleConnectionPartialView.swift in Sources */,
 				212F58FD2472219C009873AE /* BrewView.swift in Sources */,
 				212F58EA2470C4D8009873AE /* RecipeListView.swift in Sources */,
-				2191155D24CD5A5600A8D897 /* AppDelegate.swift in Sources */,
 				212F59052472F98A009873AE /* AppDelegate+Resolving.swift in Sources */,
-				2191156224CD5A5600A8D897 /* LinuxMain.swift in Sources */,
 				21BFF58224CA400D0062E012 /* View.swift in Sources */,
 				212F58CF2470C1AA009873AE /* AppDelegate.swift in Sources */,
 				212F58FF247224EC009873AE /* LineChartView.swift in Sources */,
-				2191156C24CD5A5600A8D897 /* SoftInnerShadowViewModifier.swift in Sources */,
 				216BEAC1247342CF00A05CFF /* RecipeDetailViewModel.swift in Sources */,
-				2191156A24CD5A5600A8D897 /* Color+Hex.swift in Sources */,
-				2191155E24CD5A5600A8D897 /* ContentView.swift in Sources */,
-				2191156024CD5A5600A8D897 /* SceneDelegate.swift in Sources */,
-				2191156E24CD5A5600A8D897 /* View+InverseMask.swift in Sources */,
 				21E15A8D2496925E00AF3E19 /* LineChartPreview.swift in Sources */,
-				2191156424CD5A5600A8D897 /* NeumorphicTests.swift in Sources */,
-				2191156824CD5A5600A8D897 /* Package.swift in Sources */,
-				2191156D24CD5A5600A8D897 /* Neumorphic.swift in Sources */,
 				21BFF58724CA5C2A0062E012 /* testing.swift in Sources */,
 				21F54B9524CA7A5600D0FE2A /* Button.swift in Sources */,
 				212F5901247225A8009873AE /* AddRecipeInfoView.swift in Sources */,
-				2191156B24CD5A5600A8D897 /* SoftOuterShadowViewModifier.swift in Sources */,
 				21E15A8F2496AFCF00AF3E19 /* LineChartDetail.swift in Sources */,
 				212F58D12470C1AA009873AE /* SceneDelegate.swift in Sources */,
 				21E15A9624972F4900AF3E19 /* ActivityIndicator.swift in Sources */,
@@ -755,14 +537,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				212F58DD2470C1AE009873AE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		2191153824CD5A5500A8D897 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2191153924CD5A5500A8D897 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
