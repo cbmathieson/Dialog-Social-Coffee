@@ -11,6 +11,8 @@ import Charts
 
 struct LineChartDetail: UIViewRepresentable {
     var coordinates:[ChartDataEntry]
+    var textColor:UIColor
+    var lineColor:UIColor
     let lineChart = LineChartView()
     
     func makeUIView(context: UIViewRepresentableContext<LineChartDetail>) -> LineChartView {
@@ -34,7 +36,7 @@ struct LineChartDetail: UIViewRepresentable {
         //set y axis stuff
         lineChart.rightAxis.enabled = false
         let YAxis = lineChart.leftAxis
-        YAxis.labelTextColor = UIColor.textOnBackground
+        YAxis.labelTextColor = textColor
         YAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
         YAxis.drawAxisLineEnabled = false
         
@@ -42,16 +44,16 @@ struct LineChartDetail: UIViewRepresentable {
         //lineChart.xAxis.drawLabelsEnabled = false
         lineChart.xAxis.drawAxisLineEnabled = false
         lineChart.xAxis.labelPosition = .bottom
-        
-        //line chart stuff
         lineChart.xAxis.gridColor = .clear
         lineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
         lineChart.xAxis.setLabelCount(5, force: false)
-        lineChart.xAxis.labelTextColor = UIColor.textOnBackground
+        lineChart.xAxis.labelTextColor = textColor
+        
+        //line chart stuff
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
-        lineChart.backgroundColor = UIColor.backgroundColor
+        lineChart.backgroundColor = .clear
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false
     }
@@ -69,18 +71,5 @@ struct LineChartDetail: UIViewRepresentable {
         //set.drawFilledEnabled = true
         
         return set
-    }
-    
-    // Get Gradient for Chart
-    func getGradient() -> CGGradient {
-        
-        let colorTop =  UIColor(red: 255.0/255.0, green: 149.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
-        let colorBottom = UIColor(red: 255.0/255.0, green: 94.0/255.0, blue: 58.0/255.0, alpha: 0.0).cgColor
-
-        let gradientColors = [colorTop, colorBottom] as CFArray
-        let colorLocations:[CGFloat] = [1.0, 0.0]
-        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)
-        
-        return gradient!
     }
 }

@@ -17,7 +17,6 @@ struct AddRecipeInfoView: View {
     
     @State var coordinates:[ChartDataEntry]
     @State var recipe_name:String = ""
-    @State var bean_id:String = ""
     @State var gramsIn:String = ""
     @State var comments:String = ""
     
@@ -39,7 +38,7 @@ struct AddRecipeInfoView: View {
                     .padding(.bottom)
                 Button(action: {
                     // Passes off to Save to Disk
-                    self.addRecipeInfoVM.addRecipe(recipe_name: self.recipe_name, comments: self.comments, gramsIn: self.gramsIn, bean_id: self.bean_id, coordinates: self.coordinates)
+                    self.addRecipeInfoVM.addRecipe(recipe_name: self.recipe_name, comments: self.comments, gramsIn: self.gramsIn, coordinates: self.coordinates)
                     self.isPresented = false
                 }) {
                     Text("save")

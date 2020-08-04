@@ -8,11 +8,11 @@
 
 import SwiftUI
 import AcaiaSDK
-import PartialSheet
 
 struct ScaleConnectionPartialView: View {
     
     @Binding var didConnect:Bool
+    @Binding var showPopUp:Bool
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -22,8 +22,8 @@ struct ScaleConnectionPartialView: View {
             Image(colorScheme == .dark ? "acaia-silver" : "acaia_scale")
                 .resizable()
                 .frame(width: 100,height:100)
-                //.padding(.bottom)
-            AcaiaConnectionStatus(didConnect: $didConnect).padding(.bottom)
+            //.padding(.bottom)
+            AcaiaConnectionStatus(didConnect: $didConnect,showPopUp: $showPopUp).padding(.bottom)
         }
         .foregroundColor(.textOnBackground)
     }
@@ -31,13 +31,11 @@ struct ScaleConnectionPartialView: View {
 
 //MARK: Acaia Scale Connection
 
-// This is NOT MVVM - will need to clean up in the future
-
 struct AcaiaConnectionStatus: View {
     
     @Binding var didConnect:Bool
+    @Binding var showPopUp:Bool
     
-    @EnvironmentObject var partialSheet: PartialSheetManager
     @State private var shouldAnimate = false
     
     @State private var prompt = "find nearby scales"
@@ -58,29 +56,31 @@ struct AcaiaConnectionStatus: View {
                 ActivityIndicator(shouldAnimate: self.$shouldAnimate).padding()
                     .onReceive(finishedScanPub) { _ in
                         self.finishedScan()
-                }
-                .onReceive(connectedPub) { _ in
-                    self.onConnect()
-                }
+                    }
+                    .onReceive(connectedPub) { _ in
+                        self.onConnect()
+                    }
                 //Text("")
             } else if state == .found {
-                    Picker(selection: $selectedScale,label: Text("")) {
-                        ForEach(acaiaScales,id: \.self) { scale in
-                            Text(scale.name)
-                        }
+                Picker(selection: $selectedScale,label: Text("")) {
+                    ForEach(acaiaScales,id: \.self) { scale in
+                        Text(scale.name)
                     }
-                    .pickerStyle(WheelPickerStyle())
-                    .labelsHidden()
-                    Button(action: {
-                        if let scale = AcaiaManager.shared().scaleList?[self.selectedScale] as? AcaiaScale {
-                            self.shouldAnimate = true
-                            self.state = .connecting
-                            scale.connect()
-                            self.startConnectTimer()
-                        }
-                    }) {
-                        Text("Pair")
-                    }.buttonStyle(NeumorphicButtonStyle())
+                }
+                .pickerStyle(WheelPickerStyle())
+                .labelsHidden()
+                Button(action: {
+                    if let scale = AcaiaManager.shared().scaleList?[self.selectedScale] as? AcaiaScale {
+                        self.shouldAnimate = true
+                        self.state = .connecting
+                        scale.connect()
+                        self.startConnectTimer()
+                    }
+                }) {
+                    Text("Pair")
+                        .frame(width: 100,height: 20)
+                }.softButtonStyle(RoundedRectangle(cornerRadius: 20), mainColor: Color.flatElementColor, textColor: Color.textOnBackground,darkShadowColor: Color.highlightDarkShadow,lightShadowColor: Color.highlightLightShadow)
+                
             } else if state == .loaded {
                 Text("\(prompt)").font(.body).minimumScaleFactor(0.5).padding().multilineTextAlignment(.center)
                 Button(action: {
@@ -91,11 +91,14 @@ struct AcaiaConnectionStatus: View {
                     AcaiaManager.shared().startScan(2.5)
                 }) {
                     Text("Search")
-                }.buttonStyle(NeumorphicButtonStyle())
+                        .frame(width: 100,height: 20)
+                }.softButtonStyle(RoundedRectangle(cornerRadius: 20), mainColor: Color.flatElementColor, textColor: Color.textOnBackground,darkShadowColor: Color.highlightDarkShadow,lightShadowColor: Color.highlightLightShadow)
             } else if state == .connected {
-                Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
-                Text("")
-            }
+                    Text("\(prompt)").font(.body).padding().multilineTextAlignment(.center)
+                    Text("")
+                }
+        }.onAppear {
+            self.state = .loaded
         }
     }
     
@@ -117,7 +120,7 @@ struct AcaiaConnectionStatus: View {
             self.prompt = "Connected to: \(scale.name ?? "?")"
             self.state = .connected
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.partialSheet.closePartialSheet()
+                self.showPopUp = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.didConnect = true
                 }

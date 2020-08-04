@@ -75,7 +75,7 @@ struct LineChartSwiftUI: UIViewRepresentable {
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
-        lineChart.backgroundColor = UIColor.backgroundColor
+        lineChart.backgroundColor = .clear
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false
     }

@@ -11,17 +11,34 @@ import SwiftUI
 
 extension View {
     
-    func NeumorphicViewStyle() -> ModifiedContent<Self, NeumorphicViewModifier> {
-        return modifier(NeumorphicViewModifier())
+    func scaleConnectionStyle() -> some View {
+        self.modifier(ScaleConnectionViewModifier())
     }
     
     func MainChartStyle() -> some View {
         self.modifier(MainChart())
     }
     
+    func LineChartStyle() -> some View {
+        self.modifier(LineChartModifier())
+    }
+    
 }
 
 // View Modifiers
+
+struct ScaleConnectionViewModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity)
+            .background(Color.flatElementColor)
+            .cornerRadius(30.0)
+            .padding(.bottom)
+            .padding(.leading)
+            .padding(.trailing)
+    }
+}
 
 struct MainChart: ViewModifier {
     
@@ -29,29 +46,18 @@ struct MainChart: ViewModifier {
         content
             .padding(5)
             .cornerRadius(20)
-            .background(Neumorphic.shared.mainColor())
     }
     
 }
 
-struct NeumorphicViewModifier: ViewModifier {
-    
-    @Environment(\.colorScheme) var colorScheme
+
+struct LineChartModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .background(Color.lineChartBackground)
             .padding(10)
-            .background(
-                ZStack {
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .shadow(color: .white, radius: 10, x: -7, y: -7)
-                        .shadow(color: .black, radius: 10, x: 7, y: 7)
-                        .blendMode(colorScheme == .dark ? .darken : .overlay)
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .fill(Color.elementColor)
-                }
-            )
-            .foregroundColor(.textOnHighlight)
+            .cornerRadius(20)
     }
 }
 

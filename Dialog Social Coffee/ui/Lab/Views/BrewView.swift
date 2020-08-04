@@ -10,17 +10,16 @@ import SwiftUI
 import AcaiaSDK
 import Charts
 import Combine
-import PartialSheet
 
 struct BrewView: View {
     
     @Binding var isPresented: Bool
-    @EnvironmentObject var partialSheet: PartialSheetManager
     var templateCoordinates:[ChartDataEntry]
     
     @State var showInfoPage:Bool = false
     @State var coordinates = [ChartDataEntry(x:0,y:0)]
     @State var isConnected:Bool = true
+    @State var showConnectionPopUp:Bool = false
     @State var lastWeight:Double = 0
     @State var lastTime:Double = 0
     @State var state:BrewState = .loaded
@@ -40,6 +39,7 @@ struct BrewView: View {
     
     var body: some View {
         //NavigationView {
+        ZStack {
         Color.backgroundColor
             .edgesIgnoringSafeArea(.all)
             .overlay(
@@ -50,8 +50,8 @@ struct BrewView: View {
                             .fill(Color.backgroundColor)
                             .frame(width: 300, height: 320, alignment: .center)
                             .softOuterShadow(darkShadow: Color.darkShadow, lightShadow: Color.lightShadow)
-                    LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
-                        .frame(width: 280, height: 300, alignment: .center)
+                        LineChartSwiftUI(coordinates: self.$coordinates,templateCoordinates: self.templateCoordinates)
+                            .frame(width: 280, height: 300, alignment: .center)
                     }
                     .padding(.top)
                     Spacer()
@@ -164,7 +164,7 @@ struct BrewView: View {
                                     }
                             }
                             Spacer()
-                            if self.isConnected {
+                            if self.isConnected && !(self.state == .brewing) {
                                 Button(action: {if let scale = AcaiaManager.shared().connectedScale {
                                     scale.tare()
                                 } else {
@@ -207,12 +207,7 @@ struct BrewView: View {
                                 print("Already connected to \(String(describing: scale.name))")
                                 self.isConnected = true
                             } else {
-                                withAnimation {
-                                    self.partialSheet.showPartialSheet({
-                                    }) {
-                                        ScaleConnectionPartialView(didConnect: self.$isConnected)
-                                    }
-                                }
+                                showConnectionPopUp = true
                             }
                         }) {
                             Text("Reconnect to Scale").bold()
@@ -230,9 +225,13 @@ struct BrewView: View {
             .onReceive(didDisconnect) {_ in
                 self.isConnected = false
             }
+        }.popup(isPresented: self.$showConnectionPopUp, type: .toast, position: .bottom,closeOnTap: false,closeOnTapOutside: true) {
+                ScaleConnectionPartialView(didConnect: self.$isConnected,showPopUp: self.$showConnectionPopUp)
+                    .scaleConnectionStyle()
+        }
             .onAppear {
                 // TODO: reset scale so hopefully we dont get that restarting problem
-                instantiateScale()
+                self.instantiateScale()
                 UIApplication.shared.isIdleTimerDisabled = true
             }.onDisappear {
                 UIApplication.shared.isIdleTimerDisabled = false

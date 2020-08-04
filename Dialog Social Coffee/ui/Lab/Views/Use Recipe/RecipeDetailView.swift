@@ -9,83 +9,94 @@
 import SwiftUI
 import Charts
 import AcaiaSDK
-import PartialSheet
+import PopupView
 
 struct RecipeDetailView: View {
     @ObservedObject var recipeDetailVM: RecipeDetailViewModel
-    @EnvironmentObject var partialSheet: PartialSheetManager
     
     @State var coordinates:[ChartDataEntry] = []
-    
     @State var useBrewPagePresented:Bool = false
+    @State var showConnectionPopUp:Bool = false
     
     var body: some View {
-        Color.backgroundColor
-            .edgesIgnoringSafeArea(.all)
-            .overlay(
-                VStack {
-                    
-                    /*
-                     From partialsheet, programatically present navigation
-                     */
-                    NavigationLink(destination: BrewView(isPresented: self.$useBrewPagePresented, templateCoordinates: recipeDetailVM.recipe.coordinates),isActive: self.$useBrewPagePresented){
-                        EmptyView()
-                    }
-                    .isDetailLink(false)
-                    
-                    HStack {
-                        Text(recipeDetailVM.recipe.comments)
-                            .font(.body).bold()
-                            .frame(alignment: .leading)
-                        Spacer()
-                    }
-                    .padding()
+        ZStack {
+            Color.backgroundColor
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
                     VStack {
-                        HStack {
-                            Text("\(String(format: "%.0f",recipeDetailVM.recipe.time))s").font(.body).bold()
-                                .frame(alignment: .leading)
-                            Spacer()
+                        
+                        /*
+                         From connection popup, programatically present navigation
+                         */
+                        NavigationLink(destination: BrewView(isPresented: self.$useBrewPagePresented, templateCoordinates: recipeDetailVM.recipe.coordinates),isActive: self.$useBrewPagePresented){
+                            EmptyView()
                         }
-                        .padding()
+                        .isDetailLink(false)
                         HStack {
-                            
-                            Text("\(String(format: "%.1f",recipeDetailVM.recipe.coffee_in))g  →  \(String(format: "%.1f",recipeDetailVM.recipe.coffee_out))g")
-                                .font(.body).bold()
-                                .frame(alignment: .leading)
                             Spacer()
-                        }
-                        .padding()
-                    }
-                    LineChartDetail(coordinates: recipeDetailVM.recipe.coordinates)
-                        //use frame to change the graph size within your SwiftUI view
-                        .cornerRadius(10)
-                        .frame(width: 280, height: 300)
-                        .padding()
-                        .NeumorphicViewStyle()
-                    Button(action: {
-                        if let scale = AcaiaManager.shared().connectedScale {
-                            print("Already connected to \(String(describing: scale.name))")
-                            self.useBrewPagePresented = true
-                        } else {
-                            withAnimation {
-                                self.partialSheet.showPartialSheet({
-                                }) {
-                                    ScaleConnectionPartialView(didConnect: self.$useBrewPagePresented)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.backgroundColor)
+                                    .frame(height: 75)
+                                    .softOuterShadow(darkShadow: Color.darkShadow, lightShadow: Color.lightShadow)
+                                HStack {
+                                    Spacer()
+                                    VStack {
+                                        Text("\(String(format: "%.1f",recipeDetailVM.recipe.coffee_in))g").font(.headline).bold()
+                                        Text("in").font(.body)
+                                    }
+                                    Spacer()
+                                    VStack {
+                                        Text("\(String(format: "%.1f",recipeDetailVM.recipe.coffee_out))g").font(.headline).bold()
+                                        Text("out").font(.body)
+                                    }
+                                    Spacer()
+                                    VStack {
+                                        Text("\(String(format: "%.0f",recipeDetailVM.recipe.time))s").font(.headline).bold()
+                                        Text("time").font(.body)
+                                    }
+                                    Spacer()
                                 }
                             }
+                            Spacer()
                         }
-                    }) {
-                        Text("use recipe")
-                    }
-                    .buttonStyle(NeumorphicButtonStyle())
-                    .padding()
-                })
-            .onAppear {
-                // Current workaround since onDisappear does not work with navigation in BrewView
-                UIApplication.shared.isIdleTimerDisabled = false
-            }
-            .foregroundColor(.textOnBackground)
-            .navigationBarTitle("\(recipeDetailVM.recipe.title)")
+                        .padding()
+                        LineChartDetail(coordinates: recipeDetailVM.recipe.coordinates,textColor: UIColor.textOnBackground, lineColor: UIColor.highlightColor)
+                            .frame(width: 310, height: 310, alignment: .center)
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Text(recipeDetailVM.recipe.comments)
+                                .font(.body).bold()
+                                .frame(alignment: .center)
+                            Spacer()
+                        }
+                        .padding()
+                        Spacer()
+                        Button(action: {
+                            
+                            if let scale = AcaiaManager.shared().connectedScale {
+                                print("Already connected to \(String(describing: scale.name))")
+                                self.useBrewPagePresented = true
+                            } else {
+                                self.showConnectionPopUp = true
+                            }
+                        }) {
+                            Text("Use Recipe").bold()
+                                .frame(width: 200,height: 25)
+                        }
+                        .softButtonStyle(RoundedRectangle(cornerRadius: 30), mainColor: Color.highlightColor, textColor: Color.textOnHighlight,darkShadowColor: Color.highlightDarkShadow,lightShadowColor: Color.highlightLightShadow)
+                        Spacer()
+                    })
+        }.popup(isPresented: self.$showConnectionPopUp, type: .toast, position: .bottom,closeOnTap: false,closeOnTapOutside: true) {
+            ScaleConnectionPartialView(didConnect: self.$useBrewPagePresented,showPopUp: self.$showConnectionPopUp)
+                .scaleConnectionStyle()
+        }
+        .onAppear {
+            // Current workaround since onDisappear does not work with navigation in BrewView
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+        .foregroundColor(.textOnBackground)
+        .navigationBarTitle("\(recipeDetailVM.recipe.title)")
     }
 }
-

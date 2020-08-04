@@ -17,7 +17,6 @@ struct Recipe : Codable, Identifiable {
     var comments:String
     // Brew Parameters
     var coffee_in:Double
-    var bean_id: String
     var brew_curve:[Double]
 
     // calculated values

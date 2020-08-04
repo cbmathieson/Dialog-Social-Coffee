@@ -18,9 +18,9 @@ class AddRecipeInfoViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // Handles conversion from view values to save to disk
-    func addRecipe(recipe_name: String,comments: String,gramsIn: String,bean_id: String,coordinates: [ChartDataEntry]) {
+    func addRecipe(recipe_name: String,comments: String,gramsIn: String,coordinates: [ChartDataEntry]) {
         
-        let newRecipe = Recipe(title: recipe_name, comments: comments, coffee_in: convertToDouble(coffee_in: gramsIn), bean_id: bean_id, brew_curve: convertCoordinates(coordinates: coordinates))
+        let newRecipe = Recipe(title: recipe_name, comments: comments, coffee_in: convertToDouble(coffee_in: gramsIn), brew_curve: convertCoordinates(coordinates: coordinates))
         
         recipeRepository.addRecipe(newRecipe)
     }

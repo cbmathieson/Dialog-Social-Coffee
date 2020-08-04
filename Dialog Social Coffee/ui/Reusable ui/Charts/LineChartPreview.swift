@@ -11,6 +11,7 @@ import Charts
 
 struct LineChartPreview: UIViewRepresentable {
     var coordinates:[ChartDataEntry]
+    var lineColor:UIColor
     let lineChart = LineChartView()
     
     func makeUIView(context: UIViewRepresentableContext<LineChartPreview>) -> LineChartView {
@@ -47,7 +48,7 @@ struct LineChartPreview: UIViewRepresentable {
         lineChart.leftAxis.gridColor = .clear
         lineChart.rightAxis.gridColor = .clear
         lineChart.setScaleEnabled(false)
-        lineChart.backgroundColor = UIColor.backgroundColor
+        lineChart.backgroundColor = .clear
         lineChart.legend.enabled = false
         lineChart.isUserInteractionEnabled = false
     }

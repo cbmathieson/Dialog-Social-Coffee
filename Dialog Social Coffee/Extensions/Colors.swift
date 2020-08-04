@@ -14,7 +14,7 @@ extension Color {
     // Main colors for app
     static let backgroundColor = Color("BackgroundColor")
     static let highlightColor = Color("HighlightColor")
-    static let elementColor = Color("FlatElementColor")
+    static let flatElementColor = Color("FlatElementColor")
     
     // Main colors for app text/icons
     static let textOnBackground = Color("TextOnBackground")
@@ -23,8 +23,12 @@ extension Color {
     // shadows
     static let lightShadow = Color("lightShadow")
     static let darkShadow = Color("darkShadow")
-    static let highlightLightShadow = Color("HighlightLightShadow")
-    static let highlightDarkShadow = Color("HighlightDarkShadow")
+    static let highlightLightShadow = Color("highlightLightShadow")
+    static let highlightDarkShadow = Color("highlightDarkShadow")
+    
+    // Charts
+    static let lineChartBackground = Color("LineChartBackground")
+    static let lineChartText = Color("TextOnChart")
     
 }
 
@@ -33,7 +37,8 @@ extension UIColor {
     // Main colors for app
     static let backgroundColor = UIColor(named: "BackgroundColor")!
     static let highlightColor = UIColor(named: "HighlightColor")!
-    static let elementColor = UIColor(named: "FlatElementColor")!
+    static let flatElementColor = UIColor(named: "FlatElementColor")!
+    static let lineChartColor = UIColor(named: "LineChartBackground")!
     
     // Main colors for app text/icons
     static let textOnBackground = UIColor(named: "TextOnBackground")!
@@ -42,7 +47,8 @@ extension UIColor {
     // shadows
     static let lightShadow = UIColor(named: "lightShadow")!
     static let darkShadow = UIColor(named: "darkShadow")!
-    static let highlightLightShadow = UIColor(named: "HighlightLightShadow")!
-    static let highlightDarkShadow = UIColor(named: "HighlightDarkShadow")!
     
+    // Charts
+    static let lineChartBackground = UIColor(named: "LineChartBackground")!
+    static let lineChartText = UIColor(named: "TextOnChart")!
 }
